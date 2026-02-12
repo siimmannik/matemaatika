@@ -1,0 +1,27 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist Orange Cat - Happy/Welcome -->
+  <circle cx="100" cy="100" r="90" fill="#fef3c7" />
+  
+  <!-- Ears -->
+  <path d="M40 70 L20 20 L80 50 Z" fill="#f97316" />
+  <path d="M160 70 L180 20 L120 50 Z" fill="#f97316" />
+  
+  <!-- Head -->
+  <ellipse cx="100" cy="110" rx="70" ry="60" fill="#fb923c" />
+  
+  <!-- Eyes -->
+  <circle cx="75" cy="100" r="6" fill="#1f2937" />
+  <circle cx="125" cy="100" r="6" fill="#1f2937" />
+  
+  <!-- Nose & Mouth -->
+  <path d="M95 115 L105 115 L100 120 Z" fill="#be185d" />
+  <path d="M100 120 Q80 135 70 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  <path d="M100 120 Q120 135 130 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Cheeks -->
+  <circle cx="65" cy="115" r="5" fill="#fca5a5" opacity="0.6" />
+  <circle cx="135" cy="115" r="5" fill="#fca5a5" opacity="0.6" />
+  
+  <!-- Paws (Waving) -->
+  <ellipse cx="150" cy="140" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(-20 150 140)"/>
+</svg>

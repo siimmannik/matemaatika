@@ -1,0 +1,29 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist Orange Cat - Celebrating -->
+  <circle cx="100" cy="100" r="90" fill="#d1fae5" />
+  
+  <!-- Ears -->
+  <path d="M40 70 L20 20 L80 50 Z" fill="#f97316" />
+  <path d="M160 70 L180 20 L120 50 Z" fill="#f97316" />
+  
+  <!-- Head -->
+  <ellipse cx="100" cy="110" rx="70" ry="60" fill="#fb923c" />
+  
+  <!-- Eyes (Closed Happy) -->
+  <path d="M65 100 Q75 90 85 100" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  <path d="M115 100 Q125 90 135 100" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Nose & Mouth (Big Smile) -->
+  <path d="M95 115 L105 115 L100 120 Z" fill="#be185d" />
+  <path d="M100 120 Q100 135 100 135" fill="none" stroke="none" /> 
+  <path d="M80 125 Q100 145 120 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Paws (Up) -->
+  <ellipse cx="50" cy="100" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(-30 50 100)"/>
+  <ellipse cx="150" cy="100" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(30 150 100)"/>
+  
+  <!-- Confetti bits -->
+  <rect x="50" y="40" width="10" height="10" fill="#f43f5e" transform="rotate(15)" />
+  <rect x="140" y="30" width="8" height="8" fill="#3b82f6" transform="rotate(-15)" />
+  <circle cx="100" cy="30" r="5" fill="#eab308" />
+</svg>

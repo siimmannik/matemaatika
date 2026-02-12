@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist Orange Cat - Thinking -->
+  <circle cx="100" cy="100" r="90" fill="#e0e7ff" />
+  
+  <!-- Ears -->
+  <path d="M40 70 L20 20 L80 50 Z" fill="#f97316" />
+  <path d="M160 70 L180 20 L120 50 Z" fill="#f97316" />
+  
+  <!-- Head -->
+  <ellipse cx="100" cy="110" rx="70" ry="60" fill="#fb923c" />
+  
+  <!-- Eyes (Looking up/thoughtful) -->
+  <circle cx="75" cy="95" r="6" fill="#1f2937" />
+  <circle cx="125" cy="95" r="6" fill="#1f2937" />
+  
+  <!-- Nose & Mouth (Small) -->
+  <path d="M95 115 L105 115 L100 120 Z" fill="#be185d" />
+  <path d="M100 120 L100 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+  
+  <!-- Paw on Chin -->
+  <ellipse cx="80" cy="140" rx="15" ry="15" fill="#fff" stroke="#fb923c" stroke-width="2" />
+  
+  <!-- Question Mark -->
+  <text x="150" y="60" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#4f46e5">?</text>
+</svg>

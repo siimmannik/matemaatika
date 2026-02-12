@@ -140,46 +140,50 @@
     /* Dashboard Grid */
     .dashboard {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 24px;
-      /* Increased gap */
-      margin-bottom: 30px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      /* Reduced gap back to normal */
+      margin-bottom: 24px;
     }
 
     .stat-card {
       background: white;
-      padding: 24px;
-      /* Increased padding */
-      border-radius: 20px;
+      padding: 20px 16px;
+      /* More vertical padding, less horizontal */
+      border-radius: 24px;
+      /* Rounder */
       text-align: center;
       box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100%;
+      /* Ensure uniform height */
     }
 
     .stat-icon {
-      width: 40px;
-      margin-bottom: 4px;
+      font-size: 2rem;
+      margin-bottom: 8px;
     }
 
     .stat-value {
-      font-size: 2.5rem;
-      /* Increased from 1.5rem */
+      font-size: 2rem;
+      /* Adjusted from 2.5rem */
       font-weight: 800;
       color: var(--text);
-      line-height: 1.2;
+      line-height: 1.1;
+      margin-bottom: 4px;
     }
 
     .stat-label {
-      font-size: 1rem;
-      /* Increased from 0.8rem */
+      font-size: 0.85rem;
+      /* Adjusted from 1rem */
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
+      letter-spacing: 0.5px;
+      margin-top: 0;
     }
 
     /* Progress Bar (Juicy) */
@@ -813,7 +817,7 @@
 
 <body>
   <div class="container">
-    <header><img src="assets/mascot-happy.png" alt="Happy Mascot" class="mascot-main" onclick="petCat(this)">
+    <header><img src="assets/mascot-happy.svg" alt="Happy Mascot" class="mascot-main" onclick="petCat(this)">
       <div class="speech-bubble">Tere tulemast ! Lahendame koos ! 😺</div>
       <h1>7. klassi sisseastumiseksam</h1>
       <p class="subtitle">Matemaatika harjutusülesanded ja teooria</p>
@@ -841,7 +845,7 @@
         <div class="stat-value" id="streak-value">0</div>
         <div class="stat-label">Päeva</div>
       </div>
-      <div class="card progress-card" style="margin-bottom: 0; padding: 20px;"><img src="assets/mascot-thinking.png"
+      <div class="card progress-card" style="margin-bottom: 0; padding: 20px;"><img src="assets/mascot-thinking.svg"
           style="width: 50px; height: 50px; object-fit: contain;" alt="Thinking">
         <div class="progress-info">
           <div
@@ -865,7 +869,7 @@
     </div>
     <!--=====================1. MURRUD=====================-->
     <div class="section active" id="sec-murrud">
-      <div class="section-header"><img src="assets/mascot-thinking.png" class="section-icon" alt="Cat"
+      <div class="section-header"><img src="assets/mascot-thinking.svg" class="section-icon" alt="Cat"
           style="height:80px; width:auto;">
         <div>
           <h2>Murrud ja kümnendmurrud</h2>
@@ -1114,7 +1118,7 @@
     </div>
     <!--=====================2. PROTSENT=====================-->
     <div class="section" id="sec-protsent">
-      <div class="section-header"><img src="assets/mascot-happy.png" class="section-icon" alt="Cat"
+      <div class="section-header"><img src="assets/mascot-happy.svg" class="section-icon" alt="Cat"
           style="height:80px; width:auto;">
         <div>
           <h2>Protsentarvutus</h2>
@@ -1352,7 +1356,7 @@
     </div>
     <!--=====================3. GEOMEETRIA=====================-->
     <div class="section" id="sec-geom">
-      <div class="section-header"><img src="assets/mascot-thinking.png" class="section-icon" alt="Cat"
+      <div class="section-header"><img src="assets/mascot-thinking.svg" class="section-icon" alt="Cat"
           style="height:80px; width:auto;">
         <div>
           <h2>Geomeetria</h2>
