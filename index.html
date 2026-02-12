@@ -106,11 +106,18 @@
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       font-weight: 800;
       color: var(--primary);
       margin: 10px 0;
       text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-top: 0.5rem;
     }
 
     /* Shared Card Styles */
@@ -134,13 +141,15 @@
     .dashboard {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+      gap: 24px;
+      /* Increased gap */
       margin-bottom: 30px;
     }
 
     .stat-card {
       background: white;
-      padding: 16px;
+      padding: 24px;
+      /* Increased padding */
       border-radius: 20px;
       text-align: center;
       box-shadow: var(--shadow-sm);
@@ -156,17 +165,21 @@
     }
 
     .stat-value {
-      font-size: 1.5rem;
+      font-size: 2.5rem;
+      /* Increased from 1.5rem */
       font-weight: 800;
       color: var(--text);
+      line-height: 1.2;
     }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 1rem;
+      /* Increased from 0.8rem */
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 1px;
+      margin-top: 4px;
     }
 
     /* Progress Bar (Juicy) */
@@ -803,7 +816,7 @@
     <header><img src="assets/mascot-happy.png" alt="Happy Mascot" class="mascot-main" onclick="petCat(this)">
       <div class="speech-bubble">Tere tulemast ! Lahendame koos ! 😺</div>
       <h1>7. klassi sisseastumiseksam</h1>
-      <p>Matemaatika harjutusülesanded ja teooria</p>
+      <p class="subtitle">Matemaatika harjutusülesanded ja teooria</p>
     </header>
     <!-- Gamification Dashboard -->
     <div class="dashboard">
