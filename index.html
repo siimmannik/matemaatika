@@ -1,0 +1,2605 @@
+<!DOCTYPE html>
+<html lang="et">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7. klassi matemaatika sisseastumiseksami harjutused</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+    :root {
+      /* Neutral & Blue Palette (Less Pink) */
+      --bg: #f3f4f6;
+      /* Cool Gray 100 */
+      --card: #ffffff;
+      --primary: #4f46e5;
+      /* Indigo 600 */
+      --primary-light: #e0e7ff;
+      /* Indigo 100 */
+      --accent-green: #10b981;
+      /* Emerald 500 */
+      --accent-green-light: #d1fae5;
+      --accent-orange: #f59e0b;
+      /* Amber 500 */
+      --accent-orange-light: #fef3c7;
+      --accent-rose: #f43f5e;
+      /* Rose 500 (kept for errors only) */
+      --accent-rose-light: #ffe4e6;
+      --text: #1f2937;
+      /* Gray 800 */
+      --text-light: #6b7280;
+      /* Gray 500 */
+      --border: #e5e7eb;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --radius: 16px;
+      /* Slightly less round for cleaner look */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--bg);
+      opacity: 1;
+      background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px), radial-gradient(#e5e7eb 0.5px, var(--bg) 0.5px);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 80px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      position: relative;
+    }
+
+    .mascot-main {
+      width: 180px;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+    }
+
+    .mascot-main:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .speech-bubble {
+      background: white;
+      padding: 12px 24px;
+      border-radius: 20px;
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      transform: translateX(40px) rotate(5deg);
+      box-shadow: var(--shadow-sm);
+      font-weight: 700;
+      color: var(--primary);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 20px;
+      border-width: 8px 8px 0;
+      border-style: solid;
+      border-color: white transparent;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 10px 0;
+      text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+    }
+
+    /* Shared Card Styles */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 30px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      border: 2px solid white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0,
+          0, 0, 0.04);
+    }
+
+    /* Dashboard Grid */
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 16px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .stat-icon {
+      width: 40px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Progress Bar (Juicy) */
+    .progress-card {
+      grid-column: span 3;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 30px;
+      text-align:
+        left;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .progress-info {
+      flex: 1;
+    }
+
+    .progress-track {
+      background: #f3f4f6;
+      height: 24px;
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 8px;
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .progress-fill {
+      background: linear-gradient(90deg, var(--accent-green), #6ee7b7);
+      height: 100%;
+      border-radius: 99px;
+      width: 0%;
+      transition: width 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    /* Navigation */
+    .nav-container {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 99px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .nav-tab {
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 700;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid transparent;
+    }
+
+    .nav-tab:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .nav-tab.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+      transform: scale(1.05);
+    }
+
+    /* Section Styles */
+    .section {
+      display: none;
+      animation: fadeIn 0.4s ease-out;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, var(--primary-light) 0%, #c7d2fe 100%);
+      color: var(--primary);
+      padding: 30px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .section-header h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .section-icon {
+      width: 60px;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    }
+
+    /* Interactive Elements */
+    button {
+      font-family: inherit;
+    }
+
+    /* Theory */
+    .theory-card {
+      border-left: 6px solid var(--primary);
+    }
+
+    .theory-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      padding: 16px;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theory-toggle:hover {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    /* Quiz */
+    .quiz-card {
+      border: 2px dashed var(--accent-orange);
+      background: #fffbeb;
+    }
+
+    .quiz-opt {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .quiz-opt:hover {
+      border-color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .quiz-opt.correct {
+      border-color: var(--accent-green);
+      background: var(--accent-green-light);
+      color: #065f46;
+    }
+
+    .quiz-opt.wrong {
+      border-color: var(--accent-rose);
+      background: var(--accent-rose-light);
+      color: #9f1239;
+    }
+
+    /* Exercises */
+    .exercise-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(139, 92, 246, 0.3);
+    }
+
+    /* Animations */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(5deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(5deg);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .progress-card {
+        grid-column: span 1;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-container {
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 10px 20px;
+        border-radius: 0;
+        top: 0;
+        margin:
+          0 -20px 30px;
+        width: calc(100% + 40px);
+      }
+
+      .section-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    /* Missing Component Styles */
+    .theory-body {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 2px solid var(--border);
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .theory-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .rule {
+      background: white;
+      border-left: 4px solid var(--accent-orange);
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+      line-height: 1.6;
+    }
+
+    .green-rule {
+      border-left-color: var(--accent-green);
+      background: var(--accent-green-light);
+    }
+
+    .fun-fact {
+      background: #e0f2fe;
+      border: 2px dashed #38bdf8;
+      padding: 16px;
+      border-radius: 12px;
+      color: #0c4a6e;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Quiz Styles */
+    .quiz-body {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 2px dashed var(--accent-orange);
+    }
+
+    .quiz-q {
+      margin-bottom: 24px;
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quiz-q p {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .quiz-options {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quiz-result {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border-radius: 16px;
+      margin-top: 20px;
+      display: none;
+    }
+
+    /* Exercise Styles */
+    .exercise {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .exercise-content {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .input-group input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-light);
+    }
+
+    .btn-check {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 24px;
+      border-radius: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-check:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+
+    .exercise-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+
+    .hint-btn,
+    .sol-btn {
+      background: none;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .hint-btn {
+      color: var(--text-light);
+    }
+
+    .hint-btn:hover {
+      background: #f3f4f6;
+      color: var(--text);
+    }
+
+    .sol-btn {
+      color: var(--accent-rose);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .sol-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .feedback {
+      font-weight: 700;
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .feedback.correct {
+      color: var(--accent-green);
+    }
+
+    .feedback.wrong {
+      color: var(--accent-rose);
+    }
+
+    /* Utilities */
+    .arrow-t {
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .arrow-t.rotate {
+      transform: rotate(180deg);
+    }
+
+    /* Cat Helper */
+    .cat-helper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .cat-face-img {
+      width: 80px;
+      height: 80px;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      transition: transform 0.2s;
+    }
+
+    .cat-face-img:hover {
+      transform: scale(1.1) rotate(10deg);
+    }
+
+    .cat-msg {
+      background: white;
+      padding: 12px 20px;
+      border-radius: 20px;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: var(--primary);
+      max-width: 250px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* Improved Typography & Fractions */
+    body {
+      font-variant-numeric: diagonal-fractions;
+      -webkit-font-feature-settings: "frac";
+      font-feature-settings: "frac";
+    }
+
+    /* Toggle Button Styles - Better Visibility */
+    .quiz-toggle,
+    .solution-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: white;
+      border: 2px solid var(--border);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      padding: 16px;
+      margin-top: 10px;
+      border-radius: 12px;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quiz-toggle:hover,
+    .solution-toggle:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+      transform: translateY(-1px);
+    }
+
+    /* Exercise Layout Tweaks */
+    .exercise-header {
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .exercise-number {
+      min-width: 40px;
+      /* Fixed width prevents squishing */
+      height: 40px;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .done-check {
+      margin-left: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    /* Open States */
+    .quiz-body.open,
+    .solution.open,
+    .theory-body.open {
+      display: block !important;
+    }
+
+    .theory-toggle.open .arrow-t,
+    .quiz-toggle.open .arrow-t,
+    .solution-toggle.open .arrow {
+      transform: rotate(180deg);
+    }
+
+    .solution {
+      display: none;
+      margin-top: 12px;
+      padding: 20px;
+      background: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid var(--primary-light);
+      animation: fadeIn 0.3s ease-out;
+      position: relative;
+    }
+
+    .solution::before {
+      content: 'Lahenduskäik:';
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      margin-bottom: 10px;
+      font-weight: 800;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header><img src="assets/mascot-happy.png" alt="Happy Mascot" class="mascot-main" onclick="petCat(this)">
+      <div class="speech-bubble">Tere tulemast ! Lahendame koos ! 😺</div>
+      <h1>7. klassi sisseastumiseksam</h1>
+      <p>Matemaatika harjutusülesanded ja teooria</p>
+    </header>
+    <!-- Gamification Dashboard -->
+    <div class="dashboard">
+      <div class="stat-card">
+        <div class="stat-label">Tase</div>
+        <div class="stat-value" id="level-value">1</div>
+        <div class="stat-label" id="level-title">Algaja</div>
+      </div>
+      <div class="stat-card"><span class="stat-icon" style="font-size: 24px;">🏆</span>
+        <div class="stat-value" id="xp-value">0</div>
+        <div class="stat-label">XP</div>
+        <div class="xp-bar-container"
+          style="width: 100%; height: 6px; background: #eee; border-radius: 3px; margin-top: 5px; overflow: hidden;">
+          <div class="xp-bar-fill" id="xp-bar-fill"
+            style="width: 0%; height: 100%; background: var(--accent-orange); transition: width 0.5s;"></div>
+        </div>
+        <div style="font-size: 0.7rem; color: #888; margin-top: 2px;" id="xp-next-label">Järgmine: 100</div><span
+          id="xp-current-label" style="display:none"></span>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Streak</div>
+        <div class="stat-value" id="streak-value">0</div>
+        <div class="stat-label">Päeva</div>
+      </div>
+      <div class="card progress-card" style="margin-bottom: 0; padding: 20px;"><img src="assets/mascot-thinking.png"
+          style="width: 50px; height: 50px; object-fit: contain;" alt="Thinking">
+        <div class="progress-info">
+          <div
+            style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-light); margin-bottom: 5px;">
+            <span>Edusammud</span><span id="progress-text">0 / 17</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Achievements Panel (Hidden by default or minimal) -->
+    <div class="achievements-panel" id="achievements-panel" style="display:none;"></div>
+    <!-- Navigation -->
+    <div class="nav-container">
+      <div class="nav-tab active" data-section="sec-murrud">Murrud</div>
+      <div class="nav-tab" data-section="sec-protsent">Protsent</div>
+      <div class="nav-tab" data-section="sec-geom">Geomeetria</div>
+      <div class="nav-tab" data-section="sec-probleem">Probleemid</div>
+    </div>
+    <!--=====================1. MURRUD=====================-->
+    <div class="section active" id="sec-murrud">
+      <div class="section-header"><img src="assets/mascot-thinking.png" class="section-icon" alt="Cat"
+          style="height:80px; width:auto;">
+        <div>
+          <h2>Murrud ja kümnendmurrud</h2>
+          <p>Tehted harilike ja kümnendmurdudega,
+            teisendused,
+            tehete järjekord</p>
+        </div>
+      </div>
+      <!-- TEOORIA -->
+      <div class="card theory-card"><button class="theory-toggle" onclick="toggleTheory(this)"><span
+            class="icon">📖</span>Teooria meelespea <span class="arrow-t">▼</span></button>
+        <div class="theory-body">
+          <div class="theory-inner">
+            <h4>Teisendused</h4>
+            <div class="rule"><strong>Segaarv → lihtmurd:</strong>Korruta täisosa nimetajaga ja liida
+              lugejale.<br>Näide: 3 ²⁄₅=(3 · 5 + 2) / 5=¹⁷⁄₅ </div>
+            <div class="rule"><strong>Kümnendmurd → harilik murd:</strong>Kirjuta kümnendik,
+              sajandik jne nimetajaks.<br>Näide: 0,
+              375=³⁷⁵⁄₁₀₀₀=³⁄₈ </div>
+            <div class="rule"><strong>Harilik murd → kümnendmurd:</strong>Jaga lugeja nimetajaga.<br>Näide:
+              ³⁄₈=3 : 8=0,
+              375 </div>
+            <h4>Tehted murdudega</h4>
+            <div class="rule"><strong>Liitmine / lahutamine:</strong>Vii ühisele nimetajale,
+              siis liida/lahuta lugejad.<br>Näide: ²⁄₃+¹⁄₄=⁸⁄₁₂+³⁄₁₂=¹¹⁄₁₂ </div>
+            <div class="rule"><strong>Korrutamine:</strong>Korruta lugejad omavahel ja nimetajad
+              omavahel.<br>Näide: ²⁄₃ · ⁴⁄₅=⁸⁄₁₅ </div>
+            <div class="rule"><strong>Jagamine:</strong>Korruta pöördarvuga (keera murd ümber).<br>Näide: ²⁄₃
+              : ⁴⁄₅=²⁄₃ · ⁵⁄₄=¹⁰⁄₁₂=⁵⁄₆ </div>
+            <h4>Tehete järjekord</h4>
+            <div class="rule"><strong>1.</strong>Sulud (seestpoolt väljapoole) → <strong>2.</strong>Astmed →
+              <strong>3.</strong>Korrutamine ja jagamine (vasakult paremale) → <strong>4.</strong>Liitmine ja
+              lahutamine
+            </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong>Vanad egiptlased kasutasid üle 3000 aasta
+              tagasi ainult ühelugejaga murde (nt ¹⁄₃, ¹⁄₇). Murru ²⁄₅ kirjutaksid nad hoopis summana:
+              ¹⁄₃+¹⁄₁₅ ! </div>
+          </div>
+        </div>
+      </div>
+      <!-- KIIRTEST -->
+      <div class="card quiz-card" id="quiz-murrud"><button class="quiz-toggle" onclick="toggleQuiz(this)"><span
+            class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
+        <div class="quiz-body">
+          <div class="quiz-inner">
+            <div class="quiz-q" data-correct="1">
+              <p>1. Kui palju on 2 ³⁄₄ lihtmurruna?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>⁸⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹¹⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>²³⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁶⁄₄
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q" data-correct="1">
+              <p>2. Mis on arvu ⁴⁄₇ pöördväärtus?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>−⁴⁄₇
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>⁷⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁴⁄₇
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q" data-correct="1">
+              <p>3. Kui palju on ²⁄₃ · ³⁄₈?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>⁶⁄₁₁
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>⁵⁄₂₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁶⁄₈
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q" data-correct="1">
+              <p>4. Teisenda 0,
+                125 harilikuks murruks.</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>¹⁄₅
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹⁄₈
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹²⁄₁₀₀
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q" data-correct="1">
+              <p>5. Arvuta: 2+3 · 4 − 1=?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>19
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>13
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>15
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>20
+                </div>
+              </div>
+            </div>
+            <div class="quiz-result" id="quiz-murrud-result">
+              <div class="score"></div>
+              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-murrud')">Proovi
+                uuesti</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 1.1 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">1</div>
+          <div class="exercise-content">
+            <p>Arvuta avaldise täpne väärtus:</p>
+            <p class="formula">(3 ³⁄₅ : 2, 4 · ½ − ¹⁄₆) · 3,
+              375 − 1,
+              75</p><span class="difficulty easy">Keskmine</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Teisenda segaarv lihtmurruks ja kümnendmurd murruks. Järgi tehete
+                järjekorda: esmalt sulgudes korrutamine ja jagamine,
+                siis lahutamine.</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust </button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step"><strong>1. samm:</strong>Teisendame segaarvu ja kümnendmurru:<br>3 ³⁄₅=¹⁸⁄₅
+              &nbsp;
+              ja&nbsp;
+              2,
+              4=¹²⁄₅</div>
+            <div class="step"><strong>2. samm:</strong>Arvutame sulgudes — jagamine ja korrutamine
+              vasakult paremale:<br>¹⁸⁄₅ : ¹²⁄₅=¹⁸⁄₅ · ⁵⁄₁₂=⁹⁰⁄₆₀=³⁄₂<br>³⁄₂ · ½=³⁄₄</div>
+            <div class="step"><strong>3. samm:</strong>Lahutamine sulgudes:<br>³⁄₄ − ¹⁄₆=⁹⁄₁₂ − ²⁄₁₂=⁷⁄₁₂
+            </div>
+            <div class="step"><strong>4. samm:</strong>Korrutame sulud läbi:<br>3,
+              375=²⁷⁄₈<br>⁷⁄₁₂ · ²⁷⁄₈=¹⁸⁹⁄₉₆=⁶³⁄₃₂</div>
+            <div class="step"><strong>5. samm:</strong>Lahutame 1,
+              75=⁷⁄₄=⁵⁶⁄₃₂:<br>⁶³⁄₃₂ − ⁵⁶⁄₃₂=⁷⁄₃₂</div>
+            <div class="answer-box">Vastus: ⁷⁄₃₂</div>
+          </div>
+        </div>
+      </div>
+      <!-- 1.2 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">2</div>
+          <div class="exercise-content">
+            <p>Arvuta avaldise täpne väärtus:</p>
+            <p class="formula">(43 ¹⁄₃ − 42, 9) : 39+0,
+              05</p>
+            <p class="formula" style="border-top: 2px solid #333; margin-top:0; border-radius:0;">9 ¹⁄₆
+              · ²⁄₁₅</p>
+            <p style="font-size:0.85rem; color:var(--text-light);">(Ülemine avaldis jagatakse alumisega)
+            </p><span class="difficulty medium">Keskmine</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Arvuta esmalt lugeja ja nimetaja eraldi. 43 ¹⁄₃ − 42,
+                9: teisenda mõlemad murdudeks,
+                ühine nimetaja on 30.</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step"><strong>Lugeja:</strong><br>43 ¹⁄₃ − 42,
+              9=¹³⁰⁄₃ − ⁴²⁹⁄₁₀=¹³⁰⁰⁄₃₀ − ¹²⁸⁷⁄₃₀=¹³⁄₃₀<br>¹³⁄₃₀ : 39=¹³⁄₃₀ ·
+              ¹⁄₃₉=¹³⁄₁₁₇₀=¹⁄₉₀<br>¹⁄₉₀+0,
+              05=¹⁄₉₀+¹⁄₂₀=²⁄₁₈₀+⁹⁄₁₈₀=¹¹⁄₁₈₀ </div>
+            <div class="step"><strong>Nimetaja:</strong><br>9 ¹⁄₆ · ²⁄₁₅=⁵⁵⁄₆ · ²⁄₁₅=¹¹⁰⁄₉₀=¹¹⁄₉</div>
+            <div class="step"><strong>Jagamine:</strong><br>¹¹⁄₁₈₀ : ¹¹⁄₉=¹¹⁄₁₈₀ · ⁹⁄₁₁=⁹⁄₁₈₀=¹⁄₂₀</div>
+            <div class="answer-box">Vastus: ¹⁄₂₀=0,
+              05</div>
+          </div>
+        </div>
+      </div>
+      <!-- 1.3 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">3</div>
+          <div class="exercise-content">
+            <p>Kirjuta avaldis ja arvuta täpne väärtus:</p>
+            <p><em>Korruta arvude 2 ¹⁄₃ ja 1,
+                25 vahe arvude 2 ja 3,
+                25 pöördväärtuste summaga.</em></p><span class="difficulty medium">Keskmine</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                „Vahe" tähendab lahutamist, „pöördväärtus" on 1 jagatud arvuga.
+                Koosta esmalt avaldis: (2 ¹⁄₃ − 1, 25) · (¹⁄₂ + ⁴⁄₁₃)</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step"><strong>Avaldis:</strong>(2 ¹⁄₃ − 1, 25) · (¹⁄₂ + ⁴⁄₁₃)</div>
+            <div class="step"><strong>Vahe:</strong><br>2 ¹⁄₃ − 1,
+              25=⁷⁄₃ − ⁵⁄₄=²⁸⁄₁₂ − ¹⁵⁄₁₂=¹³⁄₁₂</div>
+            <div class="step"><strong>Pöördväärtuste summa:</strong><br>3,
+              25=¹³⁄₄,
+              pöördväärtus=⁴⁄₁₃<br>¹⁄₂+⁴⁄₁₃=¹³⁄₂₆+⁸⁄₂₆=²¹⁄₂₆</div>
+            <div class="step"><strong>Korrutis:</strong><br>¹³⁄₁₂ · ²¹⁄₂₆=²⁷³⁄₃₁₂=²¹⁄₂₄=⁷⁄₈</div>
+            <div class="answer-box">Vastus: ⁷⁄₈</div>
+          </div>
+        </div>
+      </div>
+      <!-- 1.4 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">4</div>
+          <div class="exercise-content">
+            <p>Arvuta avaldise täpne väärtus:</p>
+            <p class="formula">12345 − [12345 − (12345 − 1)] · 12345</p><span class="difficulty hard">Keerulisem</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Alusta kõige seesmisematest sulgudest. Pane tähele,
+                et 12345 · 12344 on suur korrutis — kas saad seda lihtsustada?</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step"><strong>1. samm:</strong>Seesmised sulud:<br>12345 − 1=12344</div>
+            <div class="step"><strong>2. samm:</strong>Nurksulud:<br>12345 − 12344=1</div>
+            <div class="step"><strong>3. samm:</strong>Korrutamine:<br>1 · 12345=12345</div>
+            <div class="step"><strong>4. samm:</strong>Lõpptulemus:<br>12345 − 12345=0</div>
+            <div class="answer-box">Vastus: 0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--=====================2. PROTSENT=====================-->
+    <div class="section" id="sec-protsent">
+      <div class="section-header"><img src="assets/mascot-happy.png" class="section-icon" alt="Cat"
+          style="height:80px; width:auto;">
+        <div>
+          <h2>Protsentarvutus</h2>
+          <p>Osa ja osamäära leidmine,
+            protsentülesanded igapäevaelust</p>
+        </div>
+      </div>
+      <!-- TEOORIA -->
+      <div class="card theory-card"><button class="theory-toggle" onclick="toggleTheory(this)"><span
+            class="icon">📖</span>Teooria meelespea <span class="arrow-t">▼</span></button>
+        <div class="theory-body">
+          <div class="theory-inner">
+            <h4>Põhimõisted</h4>
+            <div class="rule green-rule"><strong>Protsent</strong>=sajandik. &nbsp;
+              1%=¹⁄₁₀₀=0,
+              01 </div>
+            <div class="rule green-rule"><strong>Osa leidmine tervikust:</strong>osa=tervik · p :
+              100<br>Näide: 25% arvust 360 → 360 · 25 : 100=90 </div>
+            <div class="rule green-rule"><strong>Terviku leidmine osa järgi:</strong>tervik=osa : p ·
+              100<br>Näide: Kui 72 on 40% tervikust → 72 : 40 · 100=180 </div>
+            <div class="rule green-rule"><strong>Protsendi leidmine:</strong>p=osa : tervik · 100%<br>Näide:
+              45 on 200-st → 45 : 200 · 100%=22,
+              5% </div>
+            <h4>Kasulikud seosed</h4>
+            <div class="rule green-rule"><strong>Suurendamine p% võrra:</strong>uus=algne · (1 +
+              p/100)<br><strong>Vähendamine p% võrra:</strong>uus=algne · (1 − p/100)<br>Näide: 80 €+25% →
+              80 · 1,
+              25=100 € </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong>Sõna „protsent" tuleb ladina keelest: <em>per
+                centum</em> = „sajast" . Märk % tekkis käsikirjalise lühendi „p.100" moonutamisest aja
+              jooksul!
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- KIIRTEST -->
+      <div class="card quiz-card" id="quiz-protsent"><button class="quiz-toggle" onclick="toggleQuiz(this)"><span
+            class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
+        <div class="quiz-body">
+          <div class="quiz-inner">
+            <div class="quiz-q">
+              <p>1. Kui palju on 15% arvust 200?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>15
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>25
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>40
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>2. Jakk maksab 120 €. Allahindlus on 25%. Kui palju jakk nüüd maksab?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>95 €
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90 €
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>85 €
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>100
+                  €</div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>3. Hind tõusis 50 €-lt 60 €-le. Mitu protsenti hind tõusis?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>10%
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>20%
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>15%
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12%
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>4. 36 on mingi arvu 40%. Mis arv see on?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>72
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>80
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>144
+                </div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>5. Hinda tõsteti 20% ja seejärel alandati 20%. Kas lõpphind on algne,
+                suurem või väiksem?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>Sama
+                  mis algne </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>Väiksem kui algne
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>Suurem kui algne
+                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>Sõltub alghinnast
+                </div>
+              </div>
+            </div>
+            <div class="quiz-result" id="quiz-protsent-result">
+              <div class="score"></div>
+              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-protsent')">Proovi
+                uuesti</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 2.1 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">1</div>
+          <div class="exercise-content">
+            <p>Isa teenib kuus 840 eurot ja ema palk moodustab sellest 125%. Isa palka tõsteti 25% ja
+              ema palk vähenes 20%.</p>
+            <p>a) Kui palju teenivad ema ja isa nüüd kokku?<br>b) Kuidas muutus pere sissetulek?</p>
+            <span class="difficulty easy">Keskmine</span><button class="solution-toggle"
+              onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata lahendust</button><label
+              class="done-check"><input type="checkbox" onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step green-step"><strong>Ema palk:</strong>840 · 1,
+              25=1050 €</div>
+            <div class="step green-step"><strong>Isa uus palk:</strong>840 · 1,
+              25=1050 €<br><strong>Ema uus palk:</strong>1050 · 0,
+              8=840 €</div>
+            <div class="step green-step"><strong>Kokku uus:</strong>1050+840=1890 €<br><strong>Kokku
+                vana:</strong>840+1050=1890 €</div>
+            <div class="answer-box">Vastus: Kokku teenivad 1890 €. Pere sissetulek ei muutunud !</div>
+          </div>
+        </div>
+      </div>
+      <!-- 2.2 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">2</div>
+          <div class="exercise-content">
+            <p>Vannitoa põranda pindala on 4,
+              8 m². Põrand kaetakse ruudukujuliste plaatidega,
+              mille külg on 20 cm. Üks plaat maksab 0,
+              45 €. Kui palju makstakse plaatide eest,
+              kui kliendikaardiga saab soodustust 5%?</p><span class="difficulty easy">Keskmine</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Teisenda üks plaat ruutmeetritesse: 20 cm=0,
+                2 m,
+                seega ühe plaadi pindala on 0,
+                04 m². Mitu plaati mahub?</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step green-step"><strong>Plaadi pindala:</strong>0,
+              2 · 0,
+              2=0,
+              04 m²</div>
+            <div class="step green-step"><strong>Plaatide arv:</strong>4,
+              8 : 0,
+              04=120 plaati</div>
+            <div class="step green-step"><strong>Hind ilma soodustuseta:</strong>120 · 0,
+              45=54 €</div>
+            <div class="step green-step"><strong>Soodustus 5%:</strong>54 · 0,
+              05=2,
+              70 €</div>
+            <div class="answer-box">Vastus: 54 − 2,
+              70=51,
+              30 €</div>
+          </div>
+        </div>
+      </div>
+      <!-- 2.3 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">3</div>
+          <div class="exercise-content">
+            <p>Kahes kilogrammis maasikamoosis on 45% suhkrut. Kolmes kilogrammis vaarikamoosis on
+              55% suhkrut. Mitu kilogrammi suhkrut sisaldab segu,
+              kui need kaks moosi kokku segada?</p><span class="difficulty easy">Lihtne</span><button
+              class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step green-step"><strong>Maasikamoos:</strong>2 · 0,
+              45=0,
+              9 kg suhkrut</div>
+            <div class="step green-step"><strong>Vaarikamoos:</strong>3 · 0,
+              55=1,
+              65 kg suhkrut</div>
+            <div class="answer-box">Vastus: 0,
+              9+1,
+              65=2,
+              55 kg suhkrut</div>
+          </div>
+        </div>
+      </div>
+      <!-- 2.4 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">4</div>
+          <div class="exercise-content">
+            <p>Poes on allahindlus: kõik hinnad on langetatud 30%. Mart ostab jaki,
+              mille uus hind on 56 €. Kui palju maksis jakk enne allahindlust?</p><span
+              class="difficulty easy">Lihtne</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">Kui
+                hind on 30% madalam,
+                siis uus hind on 70% algsest. Seega 56 €=70% · algne hind.</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step green-step"><strong>Algne hind:</strong>Kui 30% on maha võetud,
+              siis jäi järele 70% algsest hinnast.<br>56=0,
+              70 · x<br>x=56 : 0,
+              70=80</div>
+            <div class="answer-box">Vastus: Jakk maksis enne allahindlust 80 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--=====================3. GEOMEETRIA=====================-->
+    <div class="section" id="sec-geom">
+      <div class="section-header"><img src="assets/mascot-thinking.png" class="section-icon" alt="Cat"
+          style="height:80px; width:auto;">
+        <div>
+          <h2>Geomeetria</h2>
+          <p>Kolmnurgad,
+            ruudud,
+            ristkülikud,
+            ring — pindala,
+            ümbermõõt,
+            omadused</p>
+        </div>
+      </div>
+      <!-- TEOORIA -->
+      <div class="card theory-card"><button class="theory-toggle" onclick="toggleTheory(this)"><span
+            class="icon">📖</span>Teooria meelespea <span class="arrow-t">▼</span></button>
+        <div class="theory-body">
+          <div class="theory-inner">
+            <h4>Valemid</h4>
+            <div class="rule purple-rule"><strong>Ristkülik:</strong>S=a · b &nbsp;
+              &nbsp;
+              P=2 · (a + b) </div>
+            <div class="rule purple-rule"><strong>Ruut:</strong>S=a² &nbsp;
+              &nbsp;
+              P=4a </div>
+            <div class="rule purple-rule"><strong>Kolmnurk:</strong>S=½ · a · h &nbsp;
+              &nbsp;
+              P=a+b+c </div>
+            <div class="rule purple-rule"><strong>Ring:</strong>S=π · r² &nbsp;
+              &nbsp;
+              Ümbermõõt=2π · r &nbsp;
+              &nbsp;
+              (π ≈ 3, 14) </div>
+            <div class="rule purple-rule"><strong>Sektor:</strong>S=(nurk / 360) · π · r² &nbsp;
+              &nbsp;
+              Kaare pikkus=(nurk / 360) · 2π · r </div>
+            <h4>Kolmnurkade liigitus</h4>
+            <div class="rule purple-rule"><strong>Nurkade järgi:</strong>teravnurkne (kõik nurgad &lt;
+              90°),
+              täisnurkne (üks nurk=90°),
+              nürinurkne (üks nurk &gt; 90°) </div>
+            <div class="rule purple-rule"><strong>Külgede järgi:</strong>võrdkülgne (kõik küljed=),
+              võrdhaarne (2 külge=),
+              erikülgne (kõik erinevad) </div>
+            <h4>Pythagorase teoreem</h4>
+            <div class="rule purple-rule">Täisnurkses kolmnurgas: <strong>a²+b²=c²</strong>(kus c on
+              hüpotenuus) </div>
+            <h4>Mõõtühikud</h4>
+            <div class="rule purple-rule">1 m=10 dm=100 cm=1000 mm<br>1 m²=100 dm²=10 000 cm²=1 000 000
+              mm² </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong>Arvu π väärtust on arvutatud üle 100
+              triljoni komakoha. Igapäevaelus piisab aga vaid kümnest — sellega saaks Maa ümbermõõtu
+              arvutada millimeetri täpsusega ! </div>
+          </div>
+        </div>
+      </div>
+      <!-- KIIRTEST -->
+      <div class="card quiz-card" id="quiz-geom"><button class="quiz-toggle" onclick="toggleQuiz(this)"><span
+            class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
+        <div class="quiz-body">
+          <div class="quiz-inner">
+            <div class="quiz-q">
+              <p>1. Ruudu küljepikkus on 7 cm. Kui suur on selle pindala?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>28
+                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>49
+                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>14
+                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>56
+                  cm²</div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>2. Ringi raadius on 5 cm. Kui suur on selle ümbermõõt? (π ≈ 3, 14)</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>15,
+                  7 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>31,
+                  4 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>78,
+                  5 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>25
+                  cm</div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>3. Täisnurkse kolmnurga kaatetid on 3 cm ja 4 cm. Kui pikk on hüpotenuus?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>5
+                  cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>7
+                  cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>6
+                  cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12
+                  cm</div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>4. Mitu cm² on 2,
+                5 dm²?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>25
+                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>250
+                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>2500 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>0,
+                  25 cm²</div>
+              </div>
+            </div>
+            <div class="quiz-q">
+              <p>5. Kolmnurga nurkade summa on alati…</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>180°</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>360°</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>90°</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>270°</div>
+              </div>
+            </div>
+            <div class="quiz-result" id="quiz-geom-result">
+              <div class="score"></div>
+              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-geom')">Proovi
+                uuesti</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 3.1 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">1</div>
+          <div class="exercise-content">
+            <p>Reklaamtahvli pindala on 6,
+              25 m² ning laius ⁵⁄₆ m.</p>
+            <p>a) Mitu meetrit metall-liistu läheb vaja tahvli ääristamiseks?<br>b) Mitu korda on
+              reklaamtahvli pikkus laiusest suurem?</p><span class="difficulty medium">Keskmine</span><button
+              class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step purple-step"><strong>Pikkus:</strong>S=a · b → a=S : b=6,
+              25 : ⁵⁄₆=6,
+              25 · ⁶⁄₅=²⁵⁄₄ · ⁶⁄₅=¹⁵⁰⁄₂₀=7,
+              5 m</div>
+            <div class="step purple-step"><strong>a) Ümbermõõt (liistu kogus):</strong><br>P=2 · (7, 5
+              + ⁵⁄₆)=2 · (⁴⁵⁄₆ + ⁵⁄₆)=2 · ⁵⁰⁄₆=⁵⁰⁄₃=16 ²⁄₃ m</div>
+            <div class="step purple-step"><strong>b) Mitu korda suurem:</strong><br>7,
+              5 : ⁵⁄₆=¹⁵⁄₂ · ⁶⁄₅=⁹⁰⁄₁₀=9 korda</div>
+            <div class="answer-box">a) 16 ²⁄₃ m liistu &nbsp;
+              &nbsp;
+              b) Pikkus on 9 korda suurem</div>
+          </div>
+        </div>
+      </div>
+      <!-- 3.2 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">2</div>
+          <div class="exercise-content">
+            <p>Liiklusmärgi (keelumärk) läbimõõt on 600 mm. Punase rõnga laius on 0,
+              5 dm. Leia punase rõnga pindala. Vastus anna 1 cm² täpsusega.</p><span
+              class="difficulty medium">Keskmine</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Teisenda kõik ühikud samasse. Rõngas=suur ring − väike ring.
+                Väikese ringi raadius=suure raadius − rõnga laius.</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step purple-step"><strong>Ühikud:</strong>Läbimõõt=600 mm=60 cm → R=30
+              cm<br>Rõnga laius=0,
+              5 dm=5 cm → r=30 − 5=25 cm</div>
+            <div class="step purple-step"><strong>Rõnga pindala:</strong><br>S=π · R² − π · r²=π ·
+              (30² − 25²)=π · (900 − 625)=275π<br>S=275 · 3,
+              14159… ≈ 863,
+              94 ≈ 864 cm²</div>
+            <div class="answer-box">Vastus: ≈ 864 cm²</div>
+          </div>
+        </div>
+      </div>
+      <!-- 3.3 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">3</div>
+          <div class="exercise-content">
+            <p>Ruudu ABCD küljepikkus on 6 cm. Ruudu sees on sektor (veerandring) tipuga A ja nurk
+              ∠EAB=60°. Leia viirutatud osa (ruut miinus sektor) ümbermõõt ja pindala.</p><span
+              class="difficulty hard">Keerulisem</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                Sektori raadius=ruudu külg=6 cm. Sektori pindala=(nurk/360) · π
+                · r². Ümbermõõt koosneb kolmest ruudu küljest,
+                ühest raadiusest ja kaarejoonest.</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step purple-step"><strong>Ruudu ümbermõõt on 24 cm → külg a=6 cm,
+                raadius r=6 cm</strong></div>
+            <div class="step purple-step"><strong>Sektori
+                pindala:</strong><br>S<sub>sektor</sub>=(60/360) · π · 6²=¹⁄₆ · 36π=6π ≈ 18,
+              85 cm²</div>
+            <div class="step purple-step"><strong>Viirutatud osa pindala:</strong><br>S=a² − 6π=36
+              − 6π ≈ 36 − 18,
+              85=17,
+              15 cm²</div>
+            <div class="step purple-step"><strong>Ümbermõõt:</strong>3 ruudu külge (AD + DC +
+              CB)+kaare pikkus+raadius AF<br>Kaar=(60/360) · 2π · 6=2π ≈ 6,
+              28 cm<br>P=3 · 6+2π+6=24+2π ≈ 30,
+              28 cm</div>
+            <div class="answer-box">Pindala ≈ 17,
+              15 cm² &nbsp;
+              &nbsp;
+              Ümbermõõt ≈ 30,
+              28 cm</div>
+          </div>
+        </div>
+      </div>
+      <!-- 3.4 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">4</div>
+          <div class="exercise-content">
+            <p>Ruudu ABCD küljepikkus on 4 cm. Ruudu sisse on joonestatud veerandringjoon
+              (raadiusega 4 cm, keskpunktiga nurgas A). Leia värvitud osa pindala (ala, mis jääb
+              ruudu sisse, kuid veerandringi alla). Vastus ümarda kümnendikeni.</p><span
+              class="difficulty hard">Keerulisem</span><button class="solution-toggle"
+              onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step purple-step"><strong>Ruudu pindala:</strong>4²=16 cm²</div>
+            <div class="step purple-step"><strong>Veerandringi
+                pindala:</strong><br>S<sub>veerandring</sub>=¼ · π · 4²=¼ · 16π=4π ≈ 12,
+              566 cm²</div>
+            <div class="step purple-step"><strong>Värvitud osa:</strong>Ruut −
+              veerandring<br>S=16 − 4π ≈ 16 − 12,
+              566=3,
+              434</div>
+            <div class="answer-box">Vastus: ≈ 3,
+              4 cm²</div>
+          </div>
+        </div>
+      </div>
+      <!-- 3.5 -->
+      <div class="card exercise">
+        <div class="exercise-header">
+          <div class="exercise-number">5</div>
+          <div class="exercise-content">
+            <p>Võrdhaarse kolmnurga alus on 10 cm ja haar on 13 cm. Leia kolmnurga pindala ja
+              ümbermõõt.</p><span class="difficulty easy">Lihtne</span>
+            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa)
+              <div class="hint-text">Kõrgus langeb aluse keskpunktile ja jagab kolmnurga
+                kaheks täisnurkseks kolmnurgaks. Kasuta Pythagorase teoreemi: h²+5²=13².</div>
+            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+              lahendust</button><label class="done-check"><input type="checkbox"
+                onchange="updateProgress()">Tehtud</label>
+          </div>
+        </div>
+        <div class="solution">
+          <div class="solution-inner">
+            <div class="step purple-step"><strong>Kõrgus:</strong>h²=13² − 5²=169 − 25=144 →
+              h=12 cm</div>
+            <div class="step purple-step"><strong>Pindala:</strong>S=½ · a · h=½ · 10 · 12=60
+              cm²</div>
+            <div class="step purple-step"><strong>Ümbermõõt:</strong>P=10+13+13=36 cm</div>
+            <div class="answer-box">Pindala=60 cm² &nbsp;
+              &nbsp;
+              Ümbermõõt=36 cm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--=====================4. PROBLEEMÜLESANDED=====================-->
+    <div class="section" id="sec-probleem">
+      <div class="section-header"><img src="assets/mascot-celebrate.png" class="section-icon" alt="Cat"
+          style="height:80px; width:auto;">
+        <div>
+          <h2>Probleemülesanded</h2>
+          <p>Tekstülesanded,
+            mis nõuavad mõistmist ja mitme sammu rakendamist</p>
+        </div>
+      </div>
+      <!-- TEOORIA -->
+      <div class="card theory-card"><button class="theory-toggle" onclick="toggleTheory(this)"><span
+            class="icon">📖</span>Teooria meelespea <span class="arrow-t">▼</span></button>
+        <div class="theory-body">
+          <div class="theory-inner">
+            <h4>Liikumisülesanded</h4>
+            <div class="rule orange-rule"><strong>Põhiseos:</strong>vahemaa=kiirus · aeg &nbsp;
+              →&nbsp;
+              s=v · t </div>
+            <div class="rule orange-rule"><strong>Vastassuunast
+                liikumine:</strong>lähenemiskiirus=v₁+v₂<br><strong>Sama suunda
+                liikumine:</strong>kaugnemiskiirus=v₁ − v₂ </div>
+            <h4>Murdude „keel" tekstis</h4>
+            <div class="rule orange-rule">„moodustab ²⁄₃" = korruta ²⁄₃-ga &nbsp;&nbsp;|&nbsp;&nbsp; „on
+              ²⁄₃"=korruta ²⁄₃-ga<br>„²⁄₃ millestki" = korruta see ²⁄₃-ga
+            </div>
+            <div class="rule orange-rule">Kui „A on ²⁄₃ B-st" ja tead A-d, siis: <strong>B = A : ²⁄₃ = A
+                · ³⁄₂</strong>
+            </div>
+            <h4>Lahendamise strateegia</h4>
+            <div class="rule orange-rule"><strong>1.</strong>Loe tekst hoolikalt läbi ja tõsta esile
+              arvandmed.<br><strong>2.</strong>Joonista skeem või tabel.<br><strong>3.</strong>Sõnasta
+              küsimus: mida on vaja leida?<br><strong>4.</strong>Lahenda samm-sammult ja kontrolli
+              vastuse mõistlikkust. </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong>Esimesed teadaolevad matemaatilised
+              tekstülesanded pärinevad üle 4000 aasta vanusest Babüloonia savitahvlilt. Seal arvutati
+              juba kanali kaevamise kiirust ja viljakoristuse aega ! </div>
+          </div>
+        </div>
+      </div>
+      < !-- KIIRTEST -->
+        <div class="card quiz-card" id="quiz-probleem"><button class="quiz-toggle" onclick="toggleQuiz(this)"><span
+              class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi
+            <span class="arrow-t">▼</span></button>
+          <div class="quiz-body">
+            <div class="quiz-inner">
+              <div class="quiz-q">
+                <p>1. Auto sõidab kiirusega 60 km/h. Kui kaugele jõuab ta 2,
+                  5 tunniga?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>150 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>120 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>62,
+                    5 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>180 km</div>
+                </div>
+              </div>
+              <div class="quiz-q">
+                <p>2. Kaks jooksjat jooksevad teineteise poole kiirusega 8 km/h ja 12 km/h. Kui kiiresti
+                  nad lähenevad? </p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>4 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>20 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>10 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>96 km/h</div>
+                </div>
+              </div>
+              <div class="quiz-q">
+                <p>3. Mariliis korjas 18 marja,
+                  mis on ³⁄₅ Anneli saagist. Mitu marja korjas Anneli?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>27</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>10,
+                    8</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>24</div>
+                </div>
+              </div>
+              <div class="quiz-q">
+                <p>4. 45 minutit on tundides…</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>³⁄₄ h=0,
+                    75 h </div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>²⁄₃ h=0,
+                    67 h </div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>0,
+                    45 h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁴⁄₅ h=0,
+                    8 h </div>
+                </div>
+              </div>
+              <div class="quiz-q">
+                <p>5. Jalgrattur sõitis 36 km 1,
+                  5 tunniga. Milline oli tema keskmine kiirus?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>18 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>24 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>54 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>20 km/h</div>
+                </div>
+              </div>
+              <div class="quiz-result" id="quiz-probleem-result">
+                <div class="score"></div>
+                <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-probleem')">Proovi
+                  uuesti</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        < !-- 4.1 -->
+          <div class="card exercise">
+            <div class="exercise-header">
+              <div class="exercise-number">1</div>
+              <div class="exercise-content">
+                <p>Auto sõitis kokku 360 km,
+                  läbides ⁵⁄₉ vahemaast ajaga 2 tundi ja 40 minutit. Halbade ilmastikuolude tõttu langes
+                  auto keskmine kiirus ülejäänud osal ¹⁄₃ võrra. Kui palju aega kulus autol ülejäänud
+                  osa läbimiseks? </p><span class="difficulty hard">Keerulisem</span>
+                <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+                    Leia esmalt esimese osa vahemaa ja kiirus. Siis arvuta uus
+                    (vähenenud) kiirus ja ülejäänud vahemaa.</div>
+                </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+                  lahendust</button><label class="done-check"><input type="checkbox"
+                    onchange="updateProgress()">Tehtud</label>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="solution-inner">
+                <div class="step orange-step"><strong>Esimene osa:</strong><br>Vahemaa: ⁵⁄₉ · 360=200
+                  km<br>Aeg: 2 h 40 min=2 ²⁄₃ h=⁸⁄₃ h<br>Kiirus: 200 : ⁸⁄₃=200 · ³⁄₈=75 km/h</div>
+                <div class="step orange-step"><strong>Teine osa:</strong><br>Ülejäänud vahemaa: 360 −
+                  200=160 km<br>Uus kiirus: 75 − ¹⁄₃ · 75=75 − 25=50 km/h</div>
+                <div class="step orange-step"><strong>Aeg:</strong>t=160 : 50=3,
+                  2 h=3 h 12 min</div>
+                <div class="answer-box">Vastus: Ülejäänud osa läbimiseks kulus 3 tundi ja 12 minutit
+                </div>
+              </div>
+            </div>
+          </div>
+          < !-- 4.2 -->
+            <div class="card exercise">
+              <div class="exercise-header">
+                <div class="exercise-number">2</div>
+                <div class="exercise-content">
+                  <p>Kolm sõpra korjavad seeni. Aivar korjas 24 seent,
+                    mis on ²⁄₃ Berto seenesaagist. Berto korjas omakorda ³⁄₄ sellest,
+                    mida korjas Cecilia. Mitu seent korjasid nad kokku?</p><span
+                    class="difficulty easy">Lihtne</span><button class="solution-toggle"
+                    onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+                    lahendust</button><label class="done-check"><input type="checkbox"
+                      onchange="updateProgress()">Tehtud</label>
+                </div>
+              </div>
+              <div class="solution">
+                <div class="solution-inner">
+                  <div class="step orange-step"><strong>Berto seened:</strong>24=²⁄₃ · B → B=24 · ³⁄₂=36
+                    seent</div>
+                  <div class="step orange-step"><strong>Cecilia seened:</strong>36=³⁄₄ · C → C=36 ·
+                    ⁴⁄₃=48 seent</div>
+                  <div class="answer-box">Vastus: 24+36+48=108 seent kokku</div>
+                </div>
+              </div>
+            </div>
+            < !-- 4.3 -->
+              <div class="card exercise">
+                <div class="exercise-header">
+                  <div class="exercise-number">3</div>
+                  <div class="exercise-content">
+                    <p>Kooli sööklas on lauas 8 kohta. Lõunat sööb 120 õpilast. Iga lõunapaus kestab 20
+                      minutit ja iga õpilane sööb keskmiselt 15 minutit.</p>
+                    <p>a) Mitu lauda on sööklas vähemalt vaja?<br>b) Mitu vahetust on vaja,
+                      et kõik 120 õpilast saaksid süüa,
+                      kui sööklas on 6 lauda?</p><span class="difficulty medium">Keskmine</span><button
+                      class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+                      lahendust</button><label class="done-check"><input type="checkbox"
+                        onchange="updateProgress()">Tehtud</label>
+                  </div>
+                </div>
+                <div class="solution">
+                  <div class="solution-inner">
+                    <div class="step orange-step"><strong>a) Laudade arv:</strong><br>120 : 8=15 lauda
+                      vähemalt (kui kõik sööks korraga)</div>
+                    <div class="step orange-step"><strong>b) Vahetused:</strong><br>6 lauda × 8 kohta=48
+                      õpilast korraga<br>120 : 48=2,
+                      5 → Vaja on 3 vahetust</div>
+                    <div class="answer-box">a) 15 lauda &nbsp;
+                      &nbsp;
+                      b) 3 vahetust</div>
+                  </div>
+                </div>
+              </div>
+              < !-- 4.4 -->
+                <div class="card exercise">
+                  <div class="exercise-header">
+                    <div class="exercise-number">4</div>
+                    <div class="exercise-content">
+                      <p>Kahe linna vahel on 180 km. Ühest linnast alustab teekonnet jalgrattur
+                        kiirusega 20 km/h ja teisest linnast alustab samal ajal jalakäija kiirusega 5
+                        km/h. Nad liiguvad teineteise poole.</p>
+                      <p>a) Mitme tunni pärast nad kohtuvad?<br>b) Kui kaugel kohtumispunktist on kumbki
+                        linn?</p><span class="difficulty medium">Keskmine</span>
+                      <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa)
+                        <div class="hint-text">Vastassuunast liikudes kiirused liituvad.
+                          Lähenemiskiirus=20+5=25 km/h.</div>
+                      </div><button class="solution-toggle" onclick="toggleSolution(this)"><span
+                          class="arrow">▶</span>Vaata lahendust</button><label class="done-check"><input type="checkbox"
+                          onchange="updateProgress()">Tehtud</label>
+                    </div>
+                  </div>
+                  <div class="solution">
+                    <div class="solution-inner">
+                      <div class="step orange-step"><strong>a) Kohtumisaeg:</strong><br>Lähenemiskiirus:
+                        20+5=25 km/h<br>Aeg: 180 : 25=7,
+                        2 h=7 h 12 min</div>
+                      <div class="step orange-step"><strong>b) Kaugused:</strong><br>Jalgrattur: 20 · 7,
+                        2=144 km oma linnast<br>Jalakäija: 5 · 7,
+                        2=36 km oma linnast</div>
+                      <div class="answer-box">a) 7 h 12 min pärast &nbsp;
+                        &nbsp;
+                        b) Rattur 144 km,
+                        jalakäija 36 km oma linnast </div>
+                    </div>
+                  </div>
+                </div>
+    </div>
+    <footer>
+      <p>7. klassi matemaatika sisseastumiseksami harjutusmaterjal</p>
+      <p style="margin-top: 6px; font-size: 0.9rem; font-weight: 700; color: var(--primary);">
+        Matemaatikakass usub sinusse ! 😺</p><img src="assets/mascot-happy.png" style="width: 60px; margin-top: 10px;"
+        alt="Mascot">
+    </footer>
+  </div>
+  < !-- Kassiabiline -->
+    <div class="cat-helper" id="cat-helper" onclick="changeCatMessage()"><button class="close-cat"
+        onclick="event.stopPropagation(); document.getElementById('cat-helper').style.display='none';">✕</button><img
+        src="assets/mascot-happy.png" class="cat-face-img" style="width: 50px; height: 50px; object-fit: contain;"
+        alt="Cat">
+      <div class="cat-msg" id="cat-msg">Tere ! Ma olen Matemaatikakass. Kliki mind,
+        kui vajad julgustust ! 🐾</div>
+    </div>
+    < !-- Konfetid -->
+      <div class="confetti-container" id="confetti-container"></div>
+      <script> // Tab navigation
+
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.section).classList.add('active');
+          });
+        });
+
+        // Toggle solution
+        function toggleSolution(btn) {
+          btn.classList.toggle('open');
+          const solution = btn.closest('.exercise').querySelector('.solution');
+          solution.classList.toggle('open');
+          btn.innerHTML = solution.classList.contains('open') ? '<span class="arrow" style="transform:rotate(90deg)">▶</span> Peida lahendus'
+            : '<span class="arrow">▶</span> Vaata lahendust';
+        }
+
+        // Toggle theory
+        function toggleTheory(btn) {
+          btn.classList.toggle('open');
+          btn.nextElementSibling.classList.toggle('open');
+        }
+
+        // Toggle quiz
+        function toggleQuiz(btn) {
+          btn.classList.toggle('open');
+          btn.nextElementSibling.classList.toggle('open');
+        }
+
+        // Progress tracking
+        function updateProgress() {
+          const total = document.querySelectorAll('.done-check input').length;
+          const done = document.querySelectorAll('.done-check input:checked').length;
+          document.getElementById('progress-text').textContent = done + ' / ' + total;
+          document.getElementById('progress-fill').style.width = (done / total * 100) + '%';
+        }
+
+        // Quiz logic
+        function checkAnswer(opt, isCorrect) {
+          const q = opt.closest('.quiz-q');
+          if (q.classList.contains('answered')) return;
+          q.classList.add('answered');
+
+          // Mark all options
+          q.querySelectorAll('.quiz-opt').forEach(o => {
+            o.classList.add('disabled');
+          });
+
+          if (isCorrect) {
+            opt.classList.add('correct');
+            opt.querySelector('.marker').textContent = '✓';
+          }
+
+          else {
+            opt.classList.add('wrong');
+            opt.querySelector('.marker').textContent = '✗';
+
+            // Show correct answer
+            q.querySelectorAll('.quiz-opt').forEach(o => {
+              if (o !== opt && o.getAttribute('onclick').includes('true')) {
+                o.classList.add('correct');
+                o.querySelector('.marker').textContent = '✓';
+              }
+            });
+          }
+
+          // Check if all questions in this quiz are answered
+          const quizBlock = q.closest('.quiz-block');
+          const allQ = quizBlock.querySelectorAll('.quiz-q');
+          const answeredQ = quizBlock.querySelectorAll('.quiz-q.answered');
+
+          if (allQ.length === answeredQ.length) {
+            const correctCount = quizBlock.querySelectorAll('.quiz-opt.correct:not(.wrong)').length;
+            // Count only questions where the user picked correctly
+            let userCorrect = 0;
+
+            answeredQ.forEach(aq => {
+              const opts = aq.querySelectorAll('.quiz-opt');
+
+              opts.forEach(o => {
+                if (o.classList.contains('correct') && !o.classList.contains('wrong') && o.getAttribute('onclick').includes('true') && !aq.querySelector('.quiz-opt.wrong')) {
+                  userCorrect++;
+                }
+              });
+            });
+
+            // Simpler count: questions without a .wrong option = user got it right
+            userCorrect = 0;
+
+            answeredQ.forEach(aq => {
+              if (!aq.querySelector('.quiz-opt.wrong')) userCorrect++;
+            });
+
+            const resultEl = quizBlock.querySelector('.quiz-result');
+            const scoreEl = resultEl.querySelector('.score');
+            const msgEl = resultEl.querySelector('.msg');
+
+            scoreEl.textContent = userCorrect + ' / ' + allQ.length;
+
+            if (userCorrect === allQ.length) {
+              scoreEl.className = 'score good';
+              msgEl.textContent = 'Suurepärane! Kõik õige! 🎉';
+            }
+
+            else if (userCorrect >= 3) {
+              scoreEl.className = 'score ok';
+              msgEl.textContent = 'Tubli! Vaata eksitud kohad üle ja proovi uuesti.';
+            }
+
+            else {
+              scoreEl.className = 'score bad';
+              msgEl.textContent = 'Vaata teooria meelespea uuesti üle ja proovi siis uuesti!';
+            }
+
+            resultEl.style.display = 'block';
+          }
+        }
+
+        function resetQuiz(quizId) {
+          const quiz = document.getElementById(quizId);
+
+          quiz.querySelectorAll('.quiz-q').forEach(q => {
+            q.classList.remove('answered');
+
+            q.querySelectorAll('.quiz-opt').forEach(o => {
+              o.classList.remove('correct', 'wrong', 'disabled');
+              o.querySelector('.marker').textContent = o.querySelector('.marker').textContent;
+            });
+          });
+          const markers = ['A',
+            'B',
+            'C',
+            'D'];
+
+          quiz.querySelectorAll('.quiz-q').forEach(q => {
+            q.querySelectorAll('.quiz-opt').forEach((o, i) => {
+              o.querySelector('.marker').textContent = markers[i];
+            });
+          });
+          quiz.querySelector('.quiz-result').style.display = 'none';
+          // Eemalda kassi-reaktsioonid
+          quiz.querySelectorAll('.cat-reaction').forEach(r => r.remove());
+        }
+
+        // ===== GAMIFICATION =====
+        const GAME = {
+
+          xp: 0,
+          level: 1,
+          streak: 0,
+          bestStreak: 0,
+          quizCorrect: 0,
+          quizTotal: 0,
+          exercisesDone: 0,
+          theoriesOpened: 0,
+          achievements: {}
+
+          ,
+          hintsUsed: 0,
+        }
+
+          ;
+
+        const LEVELS = [{
+          xp: 0, name: 'Kassipojake', cat: '🐱'
+        }
+
+          ,
+        {
+          xp: 100, name: 'Uudishimulik kass', cat: '😺'
+        }
+
+          ,
+        {
+          xp: 250, name: 'Tark kass', cat: '😸'
+        }
+
+          ,
+        {
+          xp: 450, name: 'Matemaatikakass', cat: '😻'
+        }
+
+          ,
+        {
+          xp: 700, name: 'Professor Kass', cat: '🎓'
+        }
+
+          ,
+        {
+          xp: 1000, name: 'Kassi-geenius', cat: '👑'
+        }
+
+          ,
+        {
+          xp: 1400, name: 'Legendaarne kass', cat: '🌟'
+        }
+
+          ,
+        ];
+
+        const ACHIEVEMENTS = [{
+          id: 'first_exercise', icon: '🐾', name: 'Esimene samm', desc: 'Lahenda esimene ülesanne', check: () => GAME.exercisesDone >= 1
+        }
+
+          ,
+        {
+          id: 'five_exercises', icon: '⭐', name: 'Viis tükki!', desc: 'Lahenda 5 ülesannet', check: () => GAME.exercisesDone >= 5
+        }
+
+          ,
+        {
+          id: 'all_exercises', icon: '👑', name: 'Kõik tehtud!', desc: 'Lahenda kõik 17 ülesannet', check: () => GAME.exercisesDone >= 17
+        }
+
+          ,
+        {
+          id: 'first_quiz', icon: '⚡', name: 'Kiirreageerija', desc: 'Vasta esimesele viktoriinik.', check: () => GAME.quizTotal >= 1
+        }
+
+          ,
+        {
+          id: 'quiz_master', icon: '🏆', name: 'Viktoriinikass', desc: 'Vasta kõigile 20-le küsimusele', check: () => GAME.quizTotal >= 20
+        }
+
+          ,
+        {
+          id: 'perfect_quiz', icon: '💎', name: 'Täiuslik!', desc: 'Saa viktoriinil kõik õigeks', check: () => GAME.quizCorrect >= 20 && GAME.quizTotal >= 20
+        }
+
+          ,
+        {
+          id: 'streak_3', icon: '🔥', name: 'Tulirida!', desc: '3 õiget vastust järjest', check: () => GAME.bestStreak >= 3
+        }
+
+          ,
+        {
+          id: 'streak_5', icon: '💥', name: 'Tulepall!', desc: '5 õiget vastust järjest', check: () => GAME.bestStreak >= 5
+        }
+
+          ,
+        {
+          id: 'streak_10', icon: '🌋', name: 'Peatamatu!', desc: '10 õiget vastust järjest', check: () => GAME.bestStreak >= 10
+        }
+
+          ,
+        {
+          id: 'theory_reader', icon: '📖', name: 'Raamatukass', desc: 'Ava kõik 4 teooriaosa', check: () => GAME.theoriesOpened >= 4
+        }
+
+          ,
+        {
+          id: 'level_3', icon: '😸', name: 'Tark kass', desc: 'Jõua tasemele 3', check: () => GAME.level >= 3
+        }
+
+          ,
+        {
+          id: 'level_5', icon: '🎓', name: 'Professor', desc: 'Jõua tasemele 5', check: () => GAME.level >= 5
+        }
+
+          ,
+        ];
+
+        function addXP(amount, sourceEl) {
+          GAME.xp += amount;
+          updateLevel();
+          updateGameUI();
+          showXPPopup(amount, sourceEl);
+          checkAchievements();
+        }
+
+        function updateLevel() {
+          let newLevel = 1;
+
+          for (let i = LEVELS.length - 1; i >= 0; i--) {
+            if (GAME.xp >= LEVELS[i].xp) {
+              newLevel = i + 1;
+              break;
+            }
+          }
+
+          if (newLevel > GAME.level) {
+            GAME.level = newLevel;
+            showLevelUp(LEVELS[newLevel - 1]);
+          }
+
+          GAME.level = newLevel;
+        }
+
+        function updateGameUI() {
+          document.getElementById('xp-value').textContent = GAME.xp;
+          document.getElementById('level-value').textContent = GAME.level;
+          document.getElementById('streak-value').textContent = GAME.streak;
+
+          if (GAME.streak >= 3) {
+            document.getElementById('streak-value').innerHTML = GAME.streak + ' <span class="streak-fire">🔥</span>';
+          }
+
+          const lvl = LEVELS[GAME.level - 1];
+          const nextLvl = LEVELS[GAME.level] || null;
+          const titleEl = document.getElementById('level-title');
+          titleEl.innerHTML = '<span class="level-cat">' + lvl.cat + '</span> ' + lvl.name;
+
+          if (nextLvl) {
+            const progress = (GAME.xp - lvl.xp) / (nextLvl.xp - lvl.xp) * 100;
+            document.getElementById('xp-bar-fill').style.width = Math.min(progress, 100) + '%';
+            document.getElementById('xp-current-label').textContent = GAME.xp + ' XP';
+            document.getElementById('xp-next-label').textContent = 'Järgmine tase: ' + nextLvl.xp + ' XP';
+          }
+
+          else {
+            document.getElementById('xp-bar-fill').style.width = '100%';
+            document.getElementById('xp-current-label').textContent = GAME.xp + ' XP';
+            document.getElementById('xp-next-label').textContent = 'MAX TASE!';
+          }
+        }
+
+        function showXPPopup(amount, el) {
+          const popup = document.createElement('div');
+          popup.className = 'xp-popup';
+          let text = '+' + amount + ' XP';
+          if (GAME.streak >= 3) text += ' 🔥';
+          popup.textContent = text;
+
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            popup.style.left = rect.left + rect.width / 2 + 'px';
+            popup.style.top = rect.top + 'px';
+          }
+
+          else {
+            popup.style.left = '50%';
+            popup.style.top = '120px';
+          }
+
+          document.body.appendChild(popup);
+          setTimeout(() => popup.remove(), 1300);
+        }
+
+        function showLevelUp(lvlData) {
+          const overlay = document.createElement('div');
+          overlay.className = 'level-up-overlay';
+          overlay.innerHTML = '<div class="level-up-card"><div class="lu-cat">' + lvlData.cat + '</div><div class="lu-title">Tase tõusis!</div><div class="lu-subtitle">Sa oled nüüd: ' + lvlData.name + '</div></div>';
+          document.body.appendChild(overlay);
+          launchConfetti();
+          setTimeout(() => overlay.remove(), 3500);
+        }
+
+        function checkAchievements() {
+          ACHIEVEMENTS.forEach(a => {
+            if (!GAME.achievements[a.id] && a.check()) {
+              GAME.achievements[a.id] = true;
+              showAchievementUnlock(a);
+              renderAchievements();
+              addXP(25, null); // Saavutuse eest bonus XP
+            }
+          });
+        }
+
+        function showAchievementUnlock(achievement) {
+          const el = document.getElementById('ach-' + achievement.id);
+
+          if (el) {
+            el.classList.remove('locked');
+            el.classList.add('unlocked');
+            el.style.animation = 'none';
+            setTimeout(() => el.style.animation = 'achieveUnlock 0.6s ease-out', 10);
+          }
+        }
+
+        function renderAchievements() {
+          const grid = document.getElementById('achievements-grid');
+          grid.innerHTML = '';
+
+          ACHIEVEMENTS.forEach(a => {
+            const div = document.createElement('div');
+            const unlocked = ! !GAME.achievements[a.id];
+            div.className = 'achievement ' + (unlocked ? 'unlocked' : 'locked');
+            div.id = 'ach-' + a.id;
+            div.innerHTML = '<span class="ach-icon">' + (unlocked ? a.icon : '🔒') + '</span><span class="ach-name">' + a.name + '</span><span class="ach-tooltip">' + a.desc + '</span>';
+            grid.appendChild(div);
+          });
+        }
+
+        // Ülesannete XP — ühenda checkboxidega
+        document.querySelectorAll('.done-check input').forEach(cb => {
+          cb.addEventListener('change', function () {
+            if (this.checked) {
+              GAME.exercisesDone++;
+              const baseXP = 20;
+              const streakBonus = GAME.streak >= 3 ? Math.floor(GAME.streak * 2) : 0;
+              addXP(baseXP + streakBonus, this.closest('.exercise'));
+            }
+
+            else {
+              GAME.exercisesDone = Math.max(0, GAME.exercisesDone - 1);
+            }
+
+            checkAchievements();
+          });
+        });
+
+        // Viktoriinil XP — patchime checkAnswer uuesti
+        const _origCheck = checkAnswer;
+
+        checkAnswer = function (opt, isCorrect) {
+          _origCheck(opt, isCorrect);
+          GAME.quizTotal++;
+
+          if (isCorrect) {
+            GAME.quizCorrect++;
+            GAME.streak++;
+            if (GAME.streak > GAME.bestStreak) GAME.bestStreak = GAME.streak;
+            const baseXP = 15;
+            const streakBonus = GAME.streak >= 3 ? GAME.streak * 3 : 0;
+            addXP(baseXP + streakBonus, opt);
+          }
+
+          else {
+            GAME.streak = 0;
+          }
+
+          updateGameUI();
+          checkAchievements();
+        }
+
+          ;
+
+        // Teooria avamise jälgimine
+        const _origTheory = toggleTheory;
+        const theoriesTracked = new Set();
+
+        toggleTheory = function (btn) {
+          _origTheory(btn);
+          const block = btn.closest('.theory-block');
+          const blockId = block.closest('.section').id;
+
+          if (!theoriesTracked.has(blockId) && btn.classList.contains('open')) {
+            theoriesTracked.add(blockId);
+            GAME.theoriesOpened++;
+            addXP(10, btn);
+            checkAchievements();
+          }
+        }
+
+          ;
+
+        // Vihjete jälgimine
+        document.querySelectorAll('.hint').forEach(h => {
+          h.addEventListener('click', function () {
+            if (!this.classList.contains('revealed')) {
+              GAME.hintsUsed++;
+            }
+          });
+        });
+
+        // Initsialiseerimine
+        renderAchievements();
+        updateGameUI();
+
+        // ===== KASSI-FUNKTSIOONID =====
+
+        // Kassi julgustussõnumid
+        const catMessages = [{
+          face: '😺', msg: 'Sa oled tark nagu kass, kes leiab alati toidu üles!'
+        }
+
+          ,
+        {
+          face: '😸', msg: 'Iga lahendatud ülesanne on nagu uus kala kaussis!'
+        }
+
+          ,
+        {
+          face: '😻', msg: 'Matemaatika on nagu kassi müristamine — mida rohkem harjutad, seda parem!'
+        }
+
+          ,
+        {
+          face: '🙀', msg: 'Ärra karda rasket ülesannet — kassid maanduvad alati jalgadele!'
+        }
+
+          ,
+        {
+          face: '😺', msg: 'Tead sa, et kassidel on 32 lihast igas kõrvas? Matemaatika nõuab ka häid lihaseid!'
+        }
+
+          ,
+        {
+          face: '😸', msg: 'Proovi uuesti! Kassid ei jää kunagi esimesel katsel kinni!'
+        }
+
+          ,
+        {
+          face: '😽', msg: 'Suurepärane töö! Siin on sulle virtuaalne kassi pai!'
+        }
+
+          ,
+        {
+          face: '😺', msg: 'Matemaatika on mäng — ja kassid armastavad mängida!'
+        }
+
+          ,
+        {
+          face: '🐱', msg: 'Kas teadsid, et kassid suudavad hüpata 6× oma pikkust? Sina suudad ka kõrgele hüpata!'
+        }
+
+          ,
+        {
+          face: '😸', msg: 'Murdude taandamine on nagu kassi pesemise rituaal — puhtaks peab saama!'
+        }
+
+          ,
+        {
+          face: '😺', msg: 'Geomeetria on igal pool — isegi kassi kõrvad on kolmnurgad!'
+        }
+
+          ,
+        {
+          face: '🐱', msg: 'Protsendid on nagu kassi uneaeg — 70% päevast magavad!'
+        }
+
+          ,
+        ];
+        let catMsgIndex = 0;
+
+        function changeCatMessage() {
+          catMsgIndex = (catMsgIndex + 1) % catMessages.length;
+          const cm = catMessages[catMsgIndex];
+          document.getElementById('cat-msg').textContent = cm.msg;
+          const face = document.querySelector('.cat-helper .cat-face-img');
+          // face.textContent = cm.face;
+          face.style.animation = 'none';
+
+          setTimeout(() => {
+            face.style.animation = 'celebrate 0.6s ease-in-out, bounce 2.5s ease-in-out infinite 0.6s';
+          }
+
+            , 10);
+        }
+
+        // Kassi silitamine päises
+        const petPhrases = ['Mjäu! 😻',
+          'Purr-r-r! 😸',
+          'Nurr-nurr! 😺',
+          '*müristab* 🐱',
+          'Mjäääu! 😽',
+          '*hüppab rõõmust* 🙀'];
+        let petIndex = 0;
+
+        function petCat(el) {
+          el.style.animation = 'none';
+
+          setTimeout(() => {
+            el.style.animation = 'celebrate 0.6s ease-in-out, bounce 2s ease-in-out infinite 0.6s';
+          }
+
+            , 10);
+          // Näita sõnumimulli
+          let bubble = document.getElementById('pet-bubble');
+
+          if (!bubble) {
+            bubble = document.createElement('div');
+            bubble.id = 'pet-bubble';
+            bubble.style.cssText = 'position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:white;padding:6px 14px;border-radius:12px;font-size:0.85rem;box-shadow:0 4px 12px rgba(0,0,0,0.1);border:1px solid #e2e8f0;white-space:nowrap;z-index:10;transition:opacity 0.3s;';
+            el.parentElement.style.position = 'relative';
+            el.parentElement.appendChild(bubble);
+          }
+
+          bubble.textContent = petPhrases[petIndex];
+          bubble.style.opacity = '1';
+          petIndex = (petIndex + 1) % petPhrases.length;
+
+          setTimeout(() => {
+            bubble.style.opacity = '0';
+          }
+
+            , 2000);
+        }
+
+        // Käpajäljed progressis
+        function updatePawTrail(done, total) {
+          const trail = document.getElementById('paw-trail');
+          trail.innerHTML = '';
+
+          for (let i = 0; i < total; i++) {
+            const paw = document.createElement('span');
+            paw.className = 'paw-step' + (i < done ? ' active' : '');
+            paw.textContent = '🐾';
+            if (i < done) paw.style.animationDelay = (i * 0.1) + 's';
+            trail.appendChild(paw);
+          }
+
+          // Kassi progress-sõnum
+          const msgEl = document.getElementById('cat-progress-msg');
+          const pct = Math.round(done / total * 100);
+          if (done === 0) msgEl.textContent = '😺 Alusta ülesannetega — Matemaatikakass ootab!';
+          else if (pct < 30) msgEl.textContent = '🐱 Hea algus! Jätka samas vaimus!';
+          else if (pct < 60) msgEl.textContent = '😸 Tubli! Üle poole veel minna!';
+          else if (pct < 100) msgEl.textContent = '😻 Suurepärane! Lõpp on juba näha!';
+          else msgEl.textContent = '🎉😺🎉 KÕIK TEHTUD! Matemaatikakass on uhke!';
+        }
+
+        // Uuenda algne updateProgress, et lisada käpajäljed
+        const origUpdateProgress = updateProgress;
+
+        updateProgress = function () {
+          const total = document.querySelectorAll('.done-check input').length;
+          const done = document.querySelectorAll('.done-check input:checked').length;
+          document.getElementById('progress-text').textContent = done + ' / ' + total;
+          document.getElementById('progress-fill').style.width = (done / total * 100) + '%';
+          updatePawTrail(done, total);
+          if (done === total && done > 0) launchConfetti();
+        }
+
+          ;
+
+        // Konfetid!
+        function launchConfetti() {
+          const container = document.getElementById('confetti-container');
+          container.innerHTML = '';
+          const colors = ['#2563eb',
+            '#059669',
+            '#d97706',
+            '#7c3aed',
+            '#e11d48',
+            '#f59e0b',
+            '#10b981'];
+          const emojis = ['🐱',
+            '😺',
+            '🐾',
+            '⭐',
+            '🎉',
+            '✨'];
+
+          for (let i = 0; i < 50; i++) {
+            const el = document.createElement('div');
+            const isEmoji = Math.random() > 0.5;
+
+            if (isEmoji) {
+              el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+              el.style.cssText = `position: absolute;
+
+          left:$ {
+            Math.random() * 100
+          }
+
+          %;
+          top:-20px;
+
+          font-size:$ {
+            12+Math.random() * 16
+          }
+
+          px;
+
+          animation:confettiFall $ {
+            2+Math.random() * 3
+          }
+
+          s ease-in $ {
+            Math.random() * 2
+          }
+
+          s forwards;
+          `;
+            }
+
+            else {
+              el.className = 'confetti';
+              el.style.left = Math.random() * 100 + '%';
+              el.style.background = colors[Math.floor(Math.random() * colors.length)];
+              el.style.animationDelay = Math.random() * 2 + 's';
+              el.style.animationDuration = (2 + Math.random() * 3) + 's';
+              el.style.width = (6 + Math.random() * 8) + 'px';
+              el.style.height = (6 + Math.random() * 8) + 'px';
+            }
+
+            container.appendChild(el);
+          }
+
+          setTimeout(() => {
+            container.innerHTML = '';
+          }
+
+            , 6000);
+        }
+
+        // Kassi-reaktsioon viktoriinil
+        const origCheckAnswer = checkAnswer;
+
+        checkAnswer = function (opt, isCorrect) {
+          origCheckAnswer(opt, isCorrect);
+          // Lisa kassi-reaktsioon
+          const q = opt.closest('.quiz-q');
+
+          if (!q.querySelector('.cat-reaction')) {
+            const reaction = document.createElement('div');
+            reaction.className = 'cat-reaction show';
+
+            if (isCorrect) {
+              reaction.innerHTML = '😸<div class="cat-text">Õige! Tubli kass!</div>';
+            }
+
+            else {
+              reaction.innerHTML = '🙀<div class="cat-text">Proovi uuesti — kassid ei anna alla!</div>';
+            }
+
+            q.appendChild(reaction);
+          }
+        }
+
+          ;
+
+        // Algne käpajälgede init
+        updatePawTrail(0, document.querySelectorAll('.done-check input').length);
+
+        // Kassiabilise sõnumite automaatne vahetus iga 30 sek
+        setInterval(() => {
+          const helper = document.getElementById('cat-helper');
+
+          if (helper && helper.style.display !== 'none') {
+            catMsgIndex = (catMsgIndex + 1) % catMessages.length;
+            const cm = catMessages[catMsgIndex];
+            document.getElementById('cat-msg').textContent = cm.msg;
+            // document.querySelector('.cat-helper .cat-face-img').textContent = cm.face;
+          }
+        }
+
+          , 30000);
+      </script>
+</body>
+
+</html>
