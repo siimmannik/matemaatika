@@ -162,17 +162,18 @@
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
+      letter-spacing: 1.5px;
+      /* Wider spacing for small caps */
+      margin-bottom: 6px;
     }
 
     .stat-value {
-      font-size: 2.25rem;
-      /* Big and clear */
+      font-size: 1.8rem;
+      /* More contained */
       font-weight: 800;
       color: var(--primary);
       /* Use primary color for numbers */
@@ -590,18 +591,88 @@
       box-shadow: 0 0 0 4px var(--primary-light);
     }
 
-    .btn-check {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 0 24px;
+    /* Hint System */
+    .hint {
+      margin-top: 12px;
+      margin-bottom: 12px;
+      display: inline-block;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--primary);
+      font-weight: 700;
+      padding: 8px 16px;
+      border: 2px dashed var(--primary-light);
       border-radius: 12px;
-      font-weight: 800;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+      user-select: none;
+    }
+
+    .hint:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+    }
+
+    .hint-text {
+      display: none;
+      margin-top: 10px;
+      padding: 12px;
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      color: var(--text);
+      font-weight: 500;
+      line-height: 1.5;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .hint.revealed {
+      border-style: solid;
+      background: white;
+      width: 100%;
+      /* Expand to full width when opened */
+      cursor: default;
+    }
+
+    .hint.revealed .hint-text {
+      display: block;
+    }
+
+    .solution-toggle {
+      margin-top: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: transparent;
+      color: var(--text-light);
+      border: 2px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 99px;
+      font-weight: 700;
       cursor: pointer;
       transition: all 0.2s;
-      display: flex;
+    }
+
+    .solution-toggle:hover {
+      background: white;
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .done-check {
+      display: inline-flex;
       align-items: center;
       gap: 8px;
+      margin-left: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-light);
+    }
+
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     }
 
     .btn-check:hover {
@@ -1007,13 +1078,18 @@
             <p class="formula">(3 ³⁄₅ : 2, 4 · ½ − ¹⁄₆) · 3,
               375 − 1,
               75</p><span class="difficulty easy">Keskmine</span>
-            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+            <div class="hint" onclick="this.classList.toggle('revealed')">
+              <span>💡 Vihje (klõpsa)</span>
+              <div class="hint-text">
                 Teisenda segaarv lihtmurruks ja kümnendmurd murruks. Järgi tehete
                 järjekorda: esmalt sulgudes korrutamine ja jagamine,
                 siis lahutamine.</div>
-            </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
-              lahendust </button><label class="done-check"><input type="checkbox"
-                onchange="updateProgress()">Tehtud</label>
+            </div>
+            <div style="margin-top: 10px; display: flex; align-items: center; flex-wrap: wrap;">
+              <button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
+                lahendust</button>
+              <label class="done-check"><input type="checkbox" onchange="updateProgress()"> Tehtud</label>
+            </div>
           </div>
         </div>
         <div class="solution">
@@ -1047,7 +1123,9 @@
               · ²⁄₁₅</p>
             <p style="font-size:0.85rem; color:var(--text-light);">(Ülemine avaldis jagatakse alumisega)
             </p><span class="difficulty medium">Keskmine</span>
-            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+            <div class="hint" onclick="this.classList.toggle('revealed')">
+              <span>💡 Vihje (klõpsa)</span>
+              <div class="hint-text">
                 Arvuta esmalt lugeja ja nimetaja eraldi. 43 ¹⁄₃ − 42,
                 9: teisenda mõlemad murdudeks,
                 ühine nimetaja on 30.</div>
@@ -1078,7 +1156,9 @@
             <p><em>Korruta arvude 2 ¹⁄₃ ja 1,
                 25 vahe arvude 2 ja 3,
                 25 pöördväärtuste summaga.</em></p><span class="difficulty medium">Keskmine</span>
-            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+            <div class="hint" onclick="this.classList.toggle('revealed')">
+              <span>💡 Vihje (klõpsa)</span>
+              <div class="hint-text">
                 „Vahe" tähendab lahutamist, „pöördväärtus" on 1 jagatud arvuga.
                 Koosta esmalt avaldis: (2 ¹⁄₃ − 1, 25) · (¹⁄₂ + ⁴⁄₁₃)</div>
             </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
@@ -1106,7 +1186,9 @@
           <div class="exercise-content">
             <p>Arvuta avaldise täpne väärtus:</p>
             <p class="formula">12345 − [12345 − (12345 − 1)] · 12345</p><span class="difficulty hard">Keerulisem</span>
-            <div class="hint" onclick="this.classList.toggle('revealed')">💡 Vihje (klõpsa) <div class="hint-text">
+            <div class="hint" onclick="this.classList.toggle('revealed')">
+              <span>💡 Vihje (klõpsa)</span>
+              <div class="hint-text">
                 Alusta kõige seesmisematest sulgudest. Pane tähele,
                 et 12345 · 12344 on suur korrutis — kas saad seda lihtsustada?</div>
             </div><button class="solution-toggle" onclick="toggleSolution(this)"><span class="arrow">▶</span>Vaata
