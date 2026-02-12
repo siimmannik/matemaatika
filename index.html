@@ -558,11 +558,16 @@
 
     .exercise-header {
       display: flex;
-      justify-content: space-between;
+      gap: 20px;
+      /* Space between number and content */
       align-items: flex-start;
     }
 
     .exercise-content {
+      flex: 1;
+      /* Take up remaining space */
+      text-align: left;
+      /* Ensure left alignment */
       font-size: 1.15rem;
       font-weight: 600;
       color: var(--text);
