@@ -1,29 +1,62 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Minimalist Orange Cat - Celebrating -->
-  <circle cx="100" cy="100" r="90" fill="#d1fae5" />
+  <defs>
+    <linearGradient id="celebrate-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d1fae5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a7f3d0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="fur-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <filter id="soft-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+      <feOffset dx="2" dy="2" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
   
-  <!-- Ears -->
-  <path d="M40 70 L20 20 L80 50 Z" fill="#f97316" />
-  <path d="M160 70 L180 20 L120 50 Z" fill="#f97316" />
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="90" fill="url(#celebrate-gradient)" />
   
-  <!-- Head -->
-  <ellipse cx="100" cy="110" rx="70" ry="60" fill="#fb923c" />
+  <g filter="url(#soft-shadow)">
+    <!-- Ears -->
+    <path d="M50 75 L30 25 L90 55 Z" fill="url(#fur-gradient)" />
+    <path d="M150 75 L170 25 L110 55 Z" fill="url(#fur-gradient)" />
+    
+    <!-- Head -->
+    <ellipse cx="100" cy="105" rx="75" ry="65" fill="url(#fur-gradient)" />
+    
+    <!-- Face Area -->
+    <ellipse cx="100" cy="115" rx="55" ry="45" fill="#ffedd5" />
+    
+    <!-- Eyes (Happy arcs) -->
+    <path d="M70 105 Q80 95 90 105" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+    <path d="M110 105 Q120 95 130 105" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
+    
+    <!-- Nose -->
+    <path d="M96 118 L104 118 L100 123 Z" fill="#be185d" />
+    
+    <!-- Mouth (Open Happy) -->
+    <path d="M100 123 Q100 138 100 138" fill="none" stroke="none" /> 
+    <path d="M85 128 Q100 145 115 128" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" />
+    
+    <!-- Paws (Raised) -->
+    <ellipse cx="50" cy="110" rx="15" ry="20" fill="#fff" stroke="#f97316" stroke-width="2" transform="rotate(-30 50 110)"/>
+    <ellipse cx="150" cy="110" rx="15" ry="20" fill="#fff" stroke="#f97316" stroke-width="2" transform="rotate(30 150 110)"/>
+  </g>
   
-  <!-- Eyes (Closed Happy) -->
-  <path d="M65 100 Q75 90 85 100" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
-  <path d="M115 100 Q125 90 135 100" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
-  
-  <!-- Nose & Mouth (Big Smile) -->
-  <path d="M95 115 L105 115 L100 120 Z" fill="#be185d" />
-  <path d="M100 120 Q100 135 100 135" fill="none" stroke="none" /> 
-  <path d="M80 125 Q100 145 120 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
-  
-  <!-- Paws (Up) -->
-  <ellipse cx="50" cy="100" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(-30 50 100)"/>
-  <ellipse cx="150" cy="100" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(30 150 100)"/>
-  
-  <!-- Confetti bits -->
-  <rect x="50" y="40" width="10" height="10" fill="#f43f5e" transform="rotate(15)" />
-  <rect x="140" y="30" width="8" height="8" fill="#3b82f6" transform="rotate(-15)" />
-  <circle cx="100" cy="30" r="5" fill="#eab308" />
+  <!-- Confetti -->
+  <g>
+    <rect x="50" y="40" width="8" height="8" fill="#f43f5e" transform="rotate(15 54 44)" />
+    <rect x="140" y="30" width="8" height="8" fill="#3b82f6" transform="rotate(-15 144 34)" />
+    <circle cx="100" cy="30" r="4" fill="#eab308" />
+    <rect x="80" y="20" width="6" height="6" fill="#10b981" transform="rotate(45 83 23)" />
+    <rect x="120" y="50" width="6" height="6" fill="#8b5cf6" transform="rotate(-30 123 53)" />
+  </g>
 </svg>

@@ -1,27 +1,67 @@
 <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Minimalist Orange Cat - Happy/Welcome -->
-  <circle cx="100" cy="100" r="90" fill="#fef3c7" />
+  <defs>
+    <linearGradient id="fur-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f97316;stop-opacity:1" />
+    </linearGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
+      <feOffset dx="2" dy="4" result="offsetblur" />
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.2" />
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
   
-  <!-- Ears -->
-  <path d="M40 70 L20 20 L80 50 Z" fill="#f97316" />
-  <path d="M160 70 L180 20 L120 50 Z" fill="#f97316" />
+  <!-- Background Circle (Soft) -->
+  <circle cx="100" cy="100" r="90" fill="#fff7ed" />
   
-  <!-- Head -->
-  <ellipse cx="100" cy="110" rx="70" ry="60" fill="#fb923c" />
+  <g filter="url(#soft-shadow)">
+    <!-- Ears -->
+    <path d="M50 75 L30 25 L90 55 Z" fill="url(#fur-gradient)" />
+    <path d="M150 75 L170 25 L110 55 Z" fill="url(#fur-gradient)" />
+    
+    <!-- Head -->
+    <ellipse cx="100" cy="105" rx="75" ry="65" fill="url(#fur-gradient)" />
+    
+    <!-- Inner Ears -->
+    <path d="M50 75 L40 45 L75 62 Z" fill="#fdba74" />
+    <path d="M150 75 L160 45 L125 62 Z" fill="#fdba74" />
+    
+    <!-- Face Area -->
+    <ellipse cx="100" cy="115" rx="55" ry="45" fill="#ffedd5" />
+    
+    <!-- Eyes -->
+    <circle cx="80" cy="105" r="7" fill="#1f2937" />
+    <circle cx="120" cy="105" r="7" fill="#1f2937" />
+    <!-- Eye Sparkle -->
+    <circle cx="82" cy="103" r="2" fill="white" />
+    <circle cx="122" cy="103" r="2" fill="white" />
+    
+    <!-- Nose -->
+    <path d="M96 118 L104 118 L100 123 Z" fill="#be185d" />
+    
+    <!-- Mouth -->
+    <path d="M100 123 Q90 133 80 125" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" />
+    <path d="M100 123 Q110 133 120 125" fill="none" stroke="#1f2937" stroke-width="2" stroke-linecap="round" />
+    
+    <!-- Cheeks -->
+    <ellipse cx="70" cy="118" rx="8" ry="5" fill="#fca5a5" opacity="0.6" />
+    <ellipse cx="130" cy="118" rx="8" ry="5" fill="#fca5a5" opacity="0.6" />
+    
+    <!-- Whiskers -->
+    <path d="M60 115 L40 110" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+    <path d="M60 120 L40 120" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+    <path d="M140 115 L160 110" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+    <path d="M140 120 L160 120" stroke="#1f2937" stroke-width="1.5" stroke-linecap="round" opacity="0.4" />
+  </g>
   
-  <!-- Eyes -->
-  <circle cx="75" cy="100" r="6" fill="#1f2937" />
-  <circle cx="125" cy="100" r="6" fill="#1f2937" />
-  
-  <!-- Nose & Mouth -->
-  <path d="M95 115 L105 115 L100 120 Z" fill="#be185d" />
-  <path d="M100 120 Q80 135 70 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
-  <path d="M100 120 Q120 135 130 125" fill="none" stroke="#1f2937" stroke-width="3" stroke-linecap="round" />
-  
-  <!-- Cheeks -->
-  <circle cx="65" cy="115" r="5" fill="#fca5a5" opacity="0.6" />
-  <circle cx="135" cy="115" r="5" fill="#fca5a5" opacity="0.6" />
-  
-  <!-- Paws (Waving) -->
-  <ellipse cx="150" cy="140" rx="15" ry="20" fill="#fff" stroke="#fb923c" stroke-width="2" transform="rotate(-20 150 140)"/>
+  <!-- Paws (Friendly wave) -->
+  <g filter="url(#soft-shadow)">
+    <ellipse cx="145" cy="145" rx="18" ry="22" fill="#fff" stroke="#f97316" stroke-width="2" transform="rotate(-15 145 145)"/>
+  </g>
 </svg>
