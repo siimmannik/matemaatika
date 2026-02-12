@@ -142,16 +142,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      /* Reduced gap back to normal */
       margin-bottom: 24px;
     }
 
     .stat-card {
       background: white;
-      padding: 20px 16px;
-      /* More vertical padding, less horizontal */
-      border-radius: 24px;
-      /* Rounder */
+      padding: 16px;
+      border-radius: 16px;
       text-align: center;
       box-shadow: var(--shadow-sm);
       display: flex;
@@ -159,29 +156,34 @@
       justify-content: center;
       align-items: center;
       height: 100%;
-      /* Ensure uniform height */
     }
 
     .stat-icon {
-      font-size: 2rem;
-      margin-bottom: 8px;
-    }
-
-    .stat-value {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--text);
-      line-height: 1.1;
+      font-size: 1.5rem;
       margin-bottom: 4px;
     }
 
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 2px;
+    }
+
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 1px;
       margin-top: 0;
+    }
+
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0;
     }
 
     /* Progress Bar (Juicy) */
