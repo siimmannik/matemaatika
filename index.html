@@ -52,7 +52,7 @@
       color: var(--text);
       line-height: 1.6;
       padding-bottom: 80px;
-      font-variant-numeric: diagonal-fractions;
+      /* font-variant-numeric removed — Unicode fractions already formatted */
     }
 
     .container {
@@ -162,21 +162,18 @@
     }
 
     .stat-label {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--text-light);
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      /* Wider spacing for small caps */
       margin-bottom: 6px;
     }
 
     .stat-value {
-      font-size: 1.8rem;
-      /* More contained */
+      font-size: 1.6rem;
       font-weight: 800;
       color: var(--primary);
-      /* Use primary color for numbers */
       line-height: 1;
       margin-bottom: 4px;
     }
@@ -334,7 +331,7 @@
       background: white;
       border: 2px solid var(--border);
       border-radius: 12px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       color: var(--text);
       cursor: pointer;
@@ -525,8 +522,8 @@
     }
 
     .quiz-q p {
-      font-weight: 700;
-      font-size: 1.1rem;
+      font-weight: 600;
+      font-size: 1rem;
       margin-bottom: 16px;
       color: var(--text);
     }
@@ -569,10 +566,15 @@
     .exercise-content {
       flex: 1;
       text-align: left;
-      font-size: 1.05rem;
-      font-weight: 600;
+      font-size: 1rem;
+      font-weight: 500;
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+    }
+
+    .exercise-content p {
+      font-size: 1rem;
+      font-weight: 500;
     }
 
     .input-group {
@@ -775,10 +777,15 @@
       padding-bottom: 4px;
     }
 
+    /* Make Unicode fractions & superscript/subscript readable */
+    .exercise-content, .step, .answer-box, .hint-text, .rule, .quiz-q p {
+      font-variant-numeric: normal;
+    }
+
     /* Formula display */
     .formula {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       background: #f8fafc;
       border: 1px solid var(--border);
@@ -843,8 +850,8 @@
       border: 2px solid var(--accent-green);
       border-radius: 12px;
       padding: 14px 20px;
-      font-size: 1.15rem;
-      font-weight: 800;
+      font-size: 1rem;
+      font-weight: 700;
       color: #065f46;
       text-align: center;
       margin-top: 4px;
