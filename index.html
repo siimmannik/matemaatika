@@ -1002,6 +1002,32 @@
       overflow: hidden;
     }
 
+    /* Quiz difficulty group labels */
+    .quiz-difficulty-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 6px 14px;
+      border-radius: 8px;
+      margin: 4px 0 -8px;
+    }
+
+    .quiz-difficulty-label.easy-label {
+      background: var(--accent-green-light);
+      color: #065f46;
+    }
+
+    .quiz-difficulty-label.medium-label {
+      background: var(--accent-orange-light);
+      color: #92400e;
+    }
+
+    .quiz-difficulty-label.hard-label {
+      background: var(--accent-rose-light);
+      color: #9f1239;
+    }
+
     /* Quiz result & score */
     .quiz-result .score {
       font-size: 2rem;
@@ -1395,76 +1421,109 @@
             class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
         <div class="quiz-body">
           <div class="quiz-inner">
-            <div class="quiz-q" data-correct="1">
-              <p>1. Kui palju on 2 ³⁄₄ lihtmurruna?</p>
+            <!-- 🟢 KERGED -->
+            <p class="quiz-difficulty-label easy-label">🟢 Kerged</p>
+
+            <div class="quiz-q">
+              <p>1. Kui palju on 1 ½ lihtmurruna?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>⁸⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹¹⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>²³⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁶⁄₄
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>²⁄₂</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>²⁄₁</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">C</span>³⁄₂</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹⁄₃</div>
               </div>
             </div>
-            <div class="quiz-q" data-correct="1">
-              <p>2. Mis on arvu ⁴⁄₇ pöördväärtus?</p>
+
+            <div class="quiz-q">
+              <p>2. Kui palju on ½ · ½?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>−⁴⁄₇
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>⁷⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁴⁄₇
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>¹⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>1</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>²⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹⁄₂</div>
               </div>
             </div>
-            <div class="quiz-q" data-correct="1">
-              <p>3. Kui palju on ²⁄₃ · ³⁄₈?</p>
+
+            <div class="quiz-q">
+              <p>3. Teisenda 0,5 harilikuks murruks.</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>⁶⁄₁₁
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>⁵⁄₂₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁶⁄₈
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>⁵⁄₁₀₀</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>⁵⁄₁</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₅</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">D</span>¹⁄₂</div>
               </div>
             </div>
-            <div class="quiz-q" data-correct="1">
-              <p>4. Teisenda 0,
-                125 harilikuks murruks.</p>
+
+            <!-- 🟡 KESKMISED -->
+            <p class="quiz-difficulty-label medium-label">🟡 Keskmised</p>
+
+            <div class="quiz-q">
+              <p>4. Arvuta: ²⁄₃ + ¹⁄₆ = ?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>¹⁄₅
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹⁄₈
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹²⁄₁₀₀
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>³⁄₉</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>⁵⁄₆</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>³⁄₆</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹⁄₂</div>
               </div>
             </div>
-            <div class="quiz-q" data-correct="1">
-              <p>5. Arvuta: 2+3 · 4 − 1=?</p>
+
+            <div class="quiz-q">
+              <p>5. Mis on arvu ⁴⁄₇ pöördväärtus?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>19
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>13
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>15
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>20
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>−⁴⁄₇</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>⁷⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁴⁄₇</div>
               </div>
             </div>
+
+            <div class="quiz-q">
+              <p>6. Teisenda 0,125 harilikuks murruks.</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>¹⁄₅</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>¹⁄₈</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>¹⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>¹²⁄₁₀₀</div>
+              </div>
+            </div>
+
+            <!-- 🔴 RASKED -->
+            <p class="quiz-difficulty-label hard-label">🔴 Rasked</p>
+
+            <div class="quiz-q">
+              <p>7. Arvuta: 2 + 3 · 4 − (10 − 8)² = ?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>16</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>12</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">C</span>10</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>6</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>8. Arvuta: ³⁄₄ : ¹⁄₂ − ²⁄₃ = ?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>¹⁄₄</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>1</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">C</span>⁵⁄₆</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>³⁄₈</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>9. Kui 0,(3) tähendab lõpmatut perioodilist murdu 0,333..., siis kui palju on 0,(3) + 0,(6)?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>1</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>0,(9)</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>⁹⁄₁₀</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>0,96</div>
+              </div>
+            </div>
+
             <div class="quiz-result" id="quiz-murrud-result">
               <div class="score"></div>
-              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-murrud')">Proovi
-                uuesti</button>
+              <div class="msg"></div>
+              <button class="quiz-reset" onclick="resetQuiz('quiz-murrud')">Proovi uuesti</button>
             </div>
           </div>
         </div>
@@ -1649,76 +1708,109 @@
             class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
         <div class="quiz-body">
           <div class="quiz-inner">
+            <!-- 🟢 KERGED -->
+            <p class="quiz-difficulty-label easy-label">🟢 Kerged</p>
+
             <div class="quiz-q">
-              <p>1. Kui palju on 15% arvust 200?</p>
+              <p>1. Kui palju on 10% arvust 300?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>15
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>25
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>40
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>3</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>300</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>33</div>
               </div>
             </div>
+
             <div class="quiz-q">
-              <p>2. Jakk maksab 120 €. Allahindlus on 25%. Kui palju jakk nüüd maksab?</p>
+              <p>2. Kui palju on 50% arvust 80?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>95 €
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90 €
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>85 €
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>100
-                  €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>50</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>40</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>30</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>160</div>
               </div>
             </div>
+
             <div class="quiz-q">
-              <p>3. Hind tõusis 50 €-lt 60 €-le. Mitu protsenti hind tõusis?</p>
+              <p>3. Raamat maksab 20 €. Allahindlus on 10%. Kui palju tuleb maksta?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>10%
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>20%
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>15%
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12%
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>10 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>19 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">C</span>18 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>2 €</div>
               </div>
             </div>
+
+            <!-- 🟡 KESKMISED -->
+            <p class="quiz-difficulty-label medium-label">🟡 Keskmised</p>
+
             <div class="quiz-q">
-              <p>4. 36 on mingi arvu 40%. Mis arv see on?</p>
+              <p>4. 36 on mingi arvu 40%. Milline on see arv?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>72
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>80
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>144
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>72</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>80</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>14,4</div>
               </div>
             </div>
+
             <div class="quiz-q">
-              <p>5. Hinda tõsteti 20% ja seejärel alandati 20%. Kas lõpphind on algne,
-                suurem või väiksem?</p>
+              <p>5. Hind tõusis 50 €-lt 60 €-le. Mitu protsenti hind tõusis?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>Sama
-                  mis algne </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>Väiksem kui algne
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>Suurem kui algne
-                </div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>Sõltub alghinnast
-                </div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>10%</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>20%</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>16,7%</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12%</div>
               </div>
             </div>
+
+            <div class="quiz-q">
+              <p>6. Jakk maksab 120 €. Esmalt tehakse 25% allahindlus. Kui palju jakk maksab?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>95 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>90 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>85 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>100 €</div>
+              </div>
+            </div>
+
+            <!-- 🔴 RASKED -->
+            <p class="quiz-difficulty-label hard-label">🔴 Rasked</p>
+
+            <div class="quiz-q">
+              <p>7. Hinda tõsteti 20% ja seejärel alandati 20%. Milline on lõpptulemus?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>Sama mis algne</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>4% väiksem kui algne</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>4% suurem kui algne</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>Sõltub alghinnast</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>8. Poes on kaup hinnaga 150 €. Esmalt tehakse 20% allahindlus, siis veel 10% sooduskoodiga. Kui palju maksab kaup lõpuks?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>105 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>108 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>100 €</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>112,50 €</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>9. Rahvaarv kasvas aastaga 5%. Aasta lõpus oli elanikke 63 000. Kui palju oli neid aasta alguses?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>59 850</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>60 000</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>61 000</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>66 150</div>
+              </div>
+            </div>
+
             <div class="quiz-result" id="quiz-protsent-result">
               <div class="score"></div>
-              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-protsent')">Proovi
-                uuesti</button>
+              <div class="msg"></div>
+              <button class="quiz-reset" onclick="resetQuiz('quiz-protsent')">Proovi uuesti</button>
             </div>
           </div>
         </div>
@@ -1905,60 +1997,21 @@
             class="icon">⚡</span>Kiirtest — kontrolli oma teadmisi <span class="arrow-t">▼</span></button>
         <div class="quiz-body">
           <div class="quiz-inner">
+            <!-- 🟢 KERGED -->
+            <p class="quiz-difficulty-label easy-label">🟢 Kerged</p>
+
             <div class="quiz-q">
               <p>1. Ruudu küljepikkus on 7 cm. Kui suur on selle pindala?</p>
               <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>28
-                  cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>49
-                  cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>14
-                  cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>56
-                  cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>28 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>49 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>14 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>56 cm²</div>
               </div>
             </div>
+
             <div class="quiz-q">
-              <p>2. Ringi raadius on 5 cm. Kui suur on selle ümbermõõt? (π ≈ 3, 14)</p>
-              <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>15,
-                  7 cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>31,
-                  4 cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>78,
-                  5 cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>25
-                  cm</div>
-              </div>
-            </div>
-            <div class="quiz-q">
-              <p>3. Täisnurkse kolmnurga kaatetid on 3 cm ja 4 cm. Kui pikk on hüpotenuus?</p>
-              <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>5
-                  cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>7
-                  cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>6
-                  cm</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12
-                  cm</div>
-              </div>
-            </div>
-            <div class="quiz-q">
-              <p>4. Mitu cm² on 2,
-                5 dm²?</p>
-              <div class="quiz-options">
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>25
-                  cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>250
-                  cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>2500 cm²</div>
-                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>0,
-                  25 cm²</div>
-              </div>
-            </div>
-            <div class="quiz-q">
-              <p>5. Kolmnurga nurkade summa on alati…</p>
+              <p>2. Kolmnurga nurkade summa on alati…</p>
               <div class="quiz-options">
                 <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>180°</div>
                 <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>360°</div>
@@ -1966,10 +2019,87 @@
                 <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>270°</div>
               </div>
             </div>
+
+            <div class="quiz-q">
+              <p>3. Ristkülik on 8 cm pikk ja 3 cm lai. Kui suur on selle ümbermõõt?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>24 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>22 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>11 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>48 cm</div>
+              </div>
+            </div>
+
+            <!-- 🟡 KESKMISED -->
+            <p class="quiz-difficulty-label medium-label">🟡 Keskmised</p>
+
+            <div class="quiz-q">
+              <p>4. Ringi raadius on 5 cm. Kui suur on selle ümbermõõt? (π ≈ 3,14)</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>15,7 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>31,4 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>78,5 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>25 cm</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>5. Täisnurkse kolmnurga kaatetid on 6 cm ja 8 cm. Kui pikk on hüpotenuus?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>10 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>14 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>7 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>48 cm</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>6. Mitu cm² on 2,5 dm²?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>25 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>250 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>2500 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>0,25 cm²</div>
+              </div>
+            </div>
+
+            <!-- 🔴 RASKED -->
+            <p class="quiz-difficulty-label hard-label">🔴 Rasked</p>
+
+            <div class="quiz-q">
+              <p>7. Ringikujulisel väljakul on raadius 10 m. Selle keskele rajatakse ruudukujuline purskkaev küljepikkusega 4 m. Kui suur on allesjääv murupind? (π ≈ 3,14)</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>298 m²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>314 m²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>300 m²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>282 m²</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>8. Võrdhaarse kolmnurga alus on 10 cm ja haar 13 cm. Kui suur on selle kõrgus alusele?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>8 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>12 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>11 cm</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>√69 cm</div>
+              </div>
+            </div>
+
+            <div class="quiz-q">
+              <p>9. Kuubi serva pikkus on 5 cm. Kui suur on selle täispindala?</p>
+              <div class="quiz-options">
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>125 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>150 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>100 cm²</div>
+                <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>200 cm²</div>
+              </div>
+            </div>
+
             <div class="quiz-result" id="quiz-geom-result">
               <div class="score"></div>
-              <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-geom')">Proovi
-                uuesti</button>
+              <div class="msg"></div>
+              <button class="quiz-reset" onclick="resetQuiz('quiz-geom')">Proovi uuesti</button>
             </div>
           </div>
         </div>
@@ -2177,20 +2307,44 @@
             <span class="arrow-t">▼</span></button>
           <div class="quiz-body">
             <div class="quiz-inner">
+              <!-- 🟢 KERGED -->
+              <p class="quiz-difficulty-label easy-label">🟢 Kerged</p>
+
               <div class="quiz-q">
-                <p>1. Auto sõidab kiirusega 60 km/h. Kui kaugele jõuab ta 2,
-                  5 tunniga?</p>
+                <p>1. Auto sõidab kiirusega 60 km/h. Kui kaugele jõuab ta 2 tunniga?</p>
                 <div class="quiz-options">
-                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>150 km</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>120 km</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>62,
-                    5 km</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>180 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>120 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>62 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>180 km</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>30 km</div>
                 </div>
               </div>
+
               <div class="quiz-q">
-                <p>2. Kaks jooksjat jooksevad teineteise poole kiirusega 8 km/h ja 12 km/h. Kui kiiresti
-                  nad lähenevad? </p>
+                <p>2. 45 minutit on tundides…</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>0,75 h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>0,45 h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>0,67 h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>0,80 h</div>
+                </div>
+              </div>
+
+              <div class="quiz-q">
+                <p>3. Poes on 120 õuna. ¹⁄₄ neist on punased. Mitu punast õuna on?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>40</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>30</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>24</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>48</div>
+                </div>
+              </div>
+
+              <!-- 🟡 KESKMISED -->
+              <p class="quiz-difficulty-label medium-label">🟡 Keskmised</p>
+
+              <div class="quiz-q">
+                <p>4. Kaks jooksjat jooksevad teineteise poole kiirusega 8 km/h ja 12 km/h. Kui kiiresti nad lähenevad?</p>
                 <div class="quiz-options">
                   <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>4 km/h</div>
                   <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>20 km/h</div>
@@ -2198,33 +2352,9 @@
                   <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>96 km/h</div>
                 </div>
               </div>
+
               <div class="quiz-q">
-                <p>3. Mariliis korjas 18 marja,
-                  mis on ³⁄₅ Anneli saagist. Mitu marja korjas Anneli?</p>
-                <div class="quiz-options">
-                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>27</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>10,
-                    8</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>24</div>
-                </div>
-              </div>
-              <div class="quiz-q">
-                <p>4. 45 minutit on tundides…</p>
-                <div class="quiz-options">
-                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>³⁄₄ h=0,
-                    75 h </div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>²⁄₃ h=0,
-                    67 h </div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>0,
-                    45 h</div>
-                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>⁴⁄₅ h=0,
-                    8 h </div>
-                </div>
-              </div>
-              <div class="quiz-q">
-                <p>5. Jalgrattur sõitis 36 km 1,
-                  5 tunniga. Milline oli tema keskmine kiirus?</p>
+                <p>5. Jalgrattur sõitis 36 km 1,5 tunniga. Milline oli tema keskmine kiirus?</p>
                 <div class="quiz-options">
                   <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>18 km/h</div>
                   <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>24 km/h</div>
@@ -2232,10 +2362,54 @@
                   <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>20 km/h</div>
                 </div>
               </div>
+
+              <div class="quiz-q">
+                <p>6. Mariliis korjas 18 marja, mis on ³⁄₅ Anneli saagist. Mitu marja korjas Anneli?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">A</span>30</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>27</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>10,8</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>24</div>
+                </div>
+              </div>
+
+              <!-- 🔴 RASKED -->
+              <p class="quiz-difficulty-label hard-label">🔴 Rasked</p>
+
+              <div class="quiz-q">
+                <p>7. Rong sõitis esimesed 2 tundi kiirusega 90 km/h ja järgmised 3 tundi kiirusega 60 km/h. Milline oli keskmine kiirus kogu teekonnal?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>75 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>72 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>80 km/h</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>70 km/h</div>
+                </div>
+              </div>
+
+              <div class="quiz-q">
+                <p>8. Nõu mahutab 12 liitrit. See täidetakse esmalt ²⁄₃ ulatuses ja siis valatakse pool täidetust välja. Kui palju vett on nõus?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>2 l</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">B</span>6 l</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">C</span>4 l</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>3 l</div>
+                </div>
+              </div>
+
+              <div class="quiz-q">
+                <p>9. Isa on 3 korda vanem kui poeg. Nelja aasta pärast on isa 2,5 korda vanem. Kui vana on poeg praegu?</p>
+                <div class="quiz-options">
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">A</span>6 aastat</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, true)"><span class="marker">B</span>8 aastat</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">C</span>10 aastat</div>
+                  <div class="quiz-opt" onclick="checkAnswer(this, false)"><span class="marker">D</span>12 aastat</div>
+                </div>
+              </div>
+
               <div class="quiz-result" id="quiz-probleem-result">
                 <div class="score"></div>
-                <div class="msg"></div><button class="quiz-reset" onclick="resetQuiz('quiz-probleem')">Proovi
-                  uuesti</button>
+                <div class="msg"></div>
+                <button class="quiz-reset" onclick="resetQuiz('quiz-probleem')">Proovi uuesti</button>
               </div>
             </div>
           </div>
@@ -2480,7 +2654,7 @@
               msgEl.textContent = 'Suurepärane! Kõik õige! 🎉';
             }
 
-            else if (userCorrect >= 3) {
+            else if (userCorrect >= Math.ceil(allQ.length * 0.6)) {
               scoreEl.className = 'score ok';
               msgEl.textContent = 'Tubli! Vaata eksitud kohad üle ja proovi uuesti.';
             }
