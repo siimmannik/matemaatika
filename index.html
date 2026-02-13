@@ -477,21 +477,55 @@
     .theory-inner {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
+    }
+
+    .theory-inner h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-top: 6px;
+      margin-bottom: -4px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--border);
     }
 
     .rule {
       background: white;
       border-left: 4px solid var(--accent-orange);
-      padding: 16px;
+      padding: 18px 20px;
       border-radius: 8px;
       box-shadow: var(--shadow-sm);
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .rule strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .rule br {
+      display: block;
+      content: "";
+      margin-top: 6px;
     }
 
     .green-rule {
       border-left-color: var(--accent-green);
       background: var(--accent-green-light);
+    }
+
+    .purple-rule {
+      border-left-color: #8b5cf6;
+      background: #f5f3ff;
+    }
+
+    .orange-rule {
+      border-left-color: var(--accent-orange);
+      background: var(--accent-orange-light);
     }
 
     .fun-fact {
@@ -1397,29 +1431,47 @@
         <div class="theory-body">
           <div class="theory-inner">
             <h4>Teisendused</h4>
-            <div class="rule"><strong>Segaarv → lihtmurd:</strong>Korruta täisosa nimetajaga ja liida
-              lugejale.<br>Näide: 3 ²⁄₅=(3 · 5 + 2) / 5=¹⁷⁄₅ </div>
-            <div class="rule"><strong>Kümnendmurd → harilik murd:</strong>Kirjuta kümnendik,
-              sajandik jne nimetajaks.<br>Näide: 0,
-              375=³⁷⁵⁄₁₀₀₀=³⁄₈ </div>
-            <div class="rule"><strong>Harilik murd → kümnendmurd:</strong>Jaga lugeja nimetajaga.<br>Näide:
-              ³⁄₈=3 : 8=0,
-              375 </div>
-            <h4>Tehted murdudega</h4>
-            <div class="rule"><strong>Liitmine / lahutamine:</strong>Vii ühisele nimetajale,
-              siis liida/lahuta lugejad.<br>Näide: ²⁄₃+¹⁄₄=⁸⁄₁₂+³⁄₁₂=¹¹⁄₁₂ </div>
-            <div class="rule"><strong>Korrutamine:</strong>Korruta lugejad omavahel ja nimetajad
-              omavahel.<br>Näide: ²⁄₃ · ⁴⁄₅=⁸⁄₁₅ </div>
-            <div class="rule"><strong>Jagamine:</strong>Korruta pöördarvuga (keera murd ümber).<br>Näide: ²⁄₃
-              : ⁴⁄₅=²⁄₃ · ⁵⁄₄=¹⁰⁄₁₂=⁵⁄₆ </div>
-            <h4>Tehete järjekord</h4>
-            <div class="rule"><strong>1.</strong>Sulud (seestpoolt väljapoole) → <strong>2.</strong>Astmed →
-              <strong>3.</strong>Korrutamine ja jagamine (vasakult paremale) → <strong>4.</strong>Liitmine ja
-              lahutamine
+            <div class="rule">
+              <strong>Segaarv → lihtmurd</strong>
+              Korruta segaarvu täisosa nimetajaga ja liida saadud korrutis lugejale. Nimetaja jääb samaks.
+              <br>Näide: 3 ²⁄₅ = (3 · 5 + 2) / 5 = ¹⁷⁄₅
             </div>
-            <div class="fun-fact"><strong>Kas teadsid?</strong>Vanad egiptlased kasutasid üle 3000 aasta
-              tagasi ainult ühelugejaga murde (nt ¹⁄₃, ¹⁄₇). Murru ²⁄₅ kirjutaksid nad hoopis summana:
-              ¹⁄₃+¹⁄₁₅ ! </div>
+            <div class="rule">
+              <strong>Kümnendmurd → harilik murd</strong>
+              Kirjuta kümnendmurd murdosa nimega: kümnendik = 10, sajandik = 100, tuhandik = 1000.
+              Seejärel taanda murd võimalikult lihtsaks.
+              <br>Näide: 0,375 = ³⁷⁵⁄₁₀₀₀ = ³⁄₈ (taandame 125-ga)
+            </div>
+            <div class="rule">
+              <strong>Harilik murd → kümnendmurd</strong>
+              Jaga lugeja nimetajaga. Kui jagamine ei lähe täpselt, ümarda vajalikule kohale.
+              <br>Näide: ³⁄₈ = 3 : 8 = 0,375
+            </div>
+            <h4>Tehted murdudega</h4>
+            <div class="rule">
+              <strong>Liitmine ja lahutamine</strong>
+              Vii murrud ühisele nimetajale (leia vähim ühiskordne), siis liida või lahuta lugejad. Nimetaja jääb samaks.
+              <br>Näide: ²⁄₃ + ¹⁄₄ = ⁸⁄₁₂ + ³⁄₁₂ = ¹¹⁄₁₂
+            </div>
+            <div class="rule">
+              <strong>Korrutamine</strong>
+              Korruta lugejad omavahel ja nimetajad omavahel. Enne korrutamist tasub taandada, et arvud jääksid väiksemaks.
+              <br>Näide: ²⁄₃ · ⁴⁄₅ = (2 · 4) / (3 · 5) = ⁸⁄₁₅
+            </div>
+            <div class="rule">
+              <strong>Jagamine</strong>
+              Jagamine = korrutamine pöördarvuga. Keera teine murd ümber ja korruta.
+              <br>Näide: ²⁄₃ : ⁴⁄₅ = ²⁄₃ · ⁵⁄₄ = ¹⁰⁄₁₂ = ⁵⁄₆
+            </div>
+            <h4>Tehete järjekord</h4>
+            <div class="rule">
+              <strong>Reegel „SAKL"</strong>
+              <strong style="display:inline; margin:0;">1.</strong> Sulud (seestpoolt väljapoole)
+              → <strong style="display:inline; margin:0;">2.</strong> Astmed
+              → <strong style="display:inline; margin:0;">3.</strong> Korrutamine ja jagamine (vasakult paremale)
+              → <strong style="display:inline; margin:0;">4.</strong> Liitmine ja lahutamine (vasakult paremale)
+            </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong> Vanad egiptlased kasutasid üle 3000 aasta tagasi ainult ühelugejaga murde (nt ¹⁄₃, ¹⁄₇). Murru ²⁄₅ kirjutaksid nad hoopis summana: ¹⁄₃ + ¹⁄₁₅!</div>
           </div>
         </div>
       </div>
@@ -1793,25 +1845,36 @@
         <div class="theory-body">
           <div class="theory-inner">
             <h4>Põhimõisted</h4>
-            <div class="rule green-rule"><strong>Protsent</strong>=sajandik. &nbsp;
-              1%=¹⁄₁₀₀=0,
-              01 </div>
-            <div class="rule green-rule"><strong>Osa leidmine tervikust:</strong>osa=tervik · p :
-              100<br>Näide: 25% arvust 360 → 360 · 25 : 100=90 </div>
-            <div class="rule green-rule"><strong>Terviku leidmine osa järgi:</strong>tervik=osa : p ·
-              100<br>Näide: Kui 72 on 40% tervikust → 72 : 40 · 100=180 </div>
-            <div class="rule green-rule"><strong>Protsendi leidmine:</strong>p=osa : tervik · 100%<br>Näide:
-              45 on 200-st → 45 : 200 · 100%=22,
-              5% </div>
-            <h4>Kasulikud seosed</h4>
-            <div class="rule green-rule"><strong>Suurendamine p% võrra:</strong>uus=algne · (1 +
-              p/100)<br><strong>Vähendamine p% võrra:</strong>uus=algne · (1 − p/100)<br>Näide: 80 €+25% →
-              80 · 1,
-              25=100 € </div>
-            <div class="fun-fact"><strong>Kas teadsid?</strong>Sõna „protsent" tuleb ladina keelest: <em>per
-                centum</em> = „sajast" . Märk % tekkis käsikirjalise lühendi „p.100" moonutamisest aja
-              jooksul!
+            <div class="rule green-rule">
+              <strong>Mis on protsent?</strong>
+              Protsent tähendab „sajandikku". Üks protsent (1%) on üks sajandik tervikust.
+              <br>1% = ¹⁄₁₀₀ = 0,01
+              <br>Seega: 100% = terve arv, 50% = pool, 25% = veerand.
             </div>
+            <div class="rule green-rule">
+              <strong>Osa leidmine tervikust</strong>
+              Kui tead tervikut ja protsenti, arvuta osa valemiga: osa = tervik · p : 100
+              <br>Näide: 25% arvust 360 → 360 · 25 : 100 = 90
+            </div>
+            <div class="rule green-rule">
+              <strong>Terviku leidmine osa järgi</strong>
+              Kui tead osa ja selle protsenti, arvuta tervik valemiga: tervik = osa : p · 100
+              <br>Näide: Kui 72 on 40% tervikust → 72 : 40 · 100 = 180
+            </div>
+            <div class="rule green-rule">
+              <strong>Protsendi leidmine</strong>
+              Kui tead osa ja tervikut, arvuta protsent valemiga: p = osa : tervik · 100%
+              <br>Näide: 45 on 200-st → 45 : 200 · 100% = 22,5%
+            </div>
+            <h4>Kasulikud seosed</h4>
+            <div class="rule green-rule">
+              <strong>Suurendamine ja vähendamine protsentide võrra</strong>
+              Suurendamine p% võrra: uus = algne · (1 + p/100)
+              <br>Vähendamine p% võrra: uus = algne · (1 − p/100)
+              <br>Näide: 80 € suurendamine 25% võrra → 80 · 1,25 = 100 €
+              <br>Näide: 100 € vähendamine 20% võrra → 100 · 0,80 = 80 €
+            </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong> Sõna „protsent" tuleb ladina keelest: <em>per centum</em> = „sajast". Märk % tekkis käsikirjalise lühendi „p.100" moonutamisest aja jooksul!</div>
           </div>
         </div>
       </div>
@@ -2217,41 +2280,60 @@
             class="icon">📖</span>Teooria meelespea <span class="arrow-t">▼</span></button>
         <div class="theory-body">
           <div class="theory-inner">
-            <h4>Valemid</h4>
-            <div class="rule purple-rule"><strong>Ristkülik:</strong>S=a · b &nbsp;
-              &nbsp;
-              P=2 · (a + b) </div>
-            <div class="rule purple-rule"><strong>Ruut:</strong>S=a² &nbsp;
-              &nbsp;
-              P=4a </div>
-            <div class="rule purple-rule"><strong>Kolmnurk:</strong>S=½ · a · h &nbsp;
-              &nbsp;
-              P=a+b+c </div>
-            <div class="rule purple-rule"><strong>Ring:</strong>S=π · r² &nbsp;
-              &nbsp;
-              Ümbermõõt=2π · r &nbsp;
-              &nbsp;
-              (π ≈ 3, 14) </div>
-            <div class="rule purple-rule"><strong>Sektor:</strong>S=(nurk / 360) · π · r² &nbsp;
-              &nbsp;
-              Kaare pikkus=(nurk / 360) · 2π · r </div>
+            <h4>Pindalavalemid</h4>
+            <div class="rule purple-rule">
+              <strong>Ristkülik</strong>
+              Pindala: S = a · b (pikkus korda laius)
+              <br>Ümbermõõt: P = 2 · (a + b)
+            </div>
+            <div class="rule purple-rule">
+              <strong>Ruut</strong>
+              Pindala: S = a² (külg korda külg)
+              <br>Ümbermõõt: P = 4 · a (neli korda külg)
+            </div>
+            <div class="rule purple-rule">
+              <strong>Kolmnurk</strong>
+              Pindala: S = ½ · a · h (pool alusest korda kõrgus)
+              <br>Ümbermõõt: P = a + b + c (kõigi külgede summa)
+            </div>
+            <div class="rule purple-rule">
+              <strong>Ring</strong>
+              Pindala: S = π · r² (pii korda raadius ruudus)
+              <br>Ümbermõõt: C = 2 · π · r (pii ≈ 3,14)
+            </div>
+            <div class="rule purple-rule">
+              <strong>Sektor (ringi osa)</strong>
+              Pindala: S = (nurk / 360) · π · r²
+              <br>Kaare pikkus: L = (nurk / 360) · 2π · r
+              <br>Sektori pindala on ringi pindalast sama osa, kui keskne nurk on 360°-st.
+            </div>
             <h4>Kolmnurkade liigitus</h4>
-            <div class="rule purple-rule"><strong>Nurkade järgi:</strong>teravnurkne (kõik nurgad &lt;
-              90°),
-              täisnurkne (üks nurk=90°),
-              nürinurkne (üks nurk &gt; 90°) </div>
-            <div class="rule purple-rule"><strong>Külgede järgi:</strong>võrdkülgne (kõik küljed=),
-              võrdhaarne (2 külge=),
-              erikülgne (kõik erinevad) </div>
+            <div class="rule purple-rule">
+              <strong>Nurkade järgi</strong>
+              Teravnurkne — kõik nurgad on väiksemad kui 90°
+              <br>Täisnurkne — üks nurk on täpselt 90°
+              <br>Nürinurkne — üks nurk on suurem kui 90°
+            </div>
+            <div class="rule purple-rule">
+              <strong>Külgede järgi</strong>
+              Võrdkülgne — kõik kolm külge on võrdsed (ka kõik nurgad = 60°)
+              <br>Võrdhaarne — kaks külge on võrdsed (ka aluse juures olevad nurgad on võrdsed)
+              <br>Erikülgne — kõik küljed on erinevad
+            </div>
             <h4>Pythagorase teoreem</h4>
-            <div class="rule purple-rule">Täisnurkses kolmnurgas: <strong>a²+b²=c²</strong>(kus c on
-              hüpotenuus) </div>
+            <div class="rule purple-rule">
+              <strong>a² + b² = c²</strong>
+              Kehtib ainult täisnurkses kolmnurgas. Siin a ja b on kaatetid (lühemad küljed) ning c on hüpotenuus (pikim külg, täisnurga vastaskülg).
+              <br>Näide: Kui a = 3 cm ja b = 4 cm, siis c² = 9 + 16 = 25, c = 5 cm.
+            </div>
             <h4>Mõõtühikud</h4>
-            <div class="rule purple-rule">1 m=10 dm=100 cm=1000 mm<br>1 m²=100 dm²=10 000 cm²=1 000 000
-              mm² </div>
-            <div class="fun-fact"><strong>Kas teadsid?</strong>Arvu π väärtust on arvutatud üle 100
-              triljoni komakoha. Igapäevaelus piisab aga vaid kümnest — sellega saaks Maa ümbermõõtu
-              arvutada millimeetri täpsusega ! </div>
+            <div class="rule purple-rule">
+              <strong>Pikkusühikud</strong>
+              1 m = 10 dm = 100 cm = 1000 mm
+              <br><strong style="display:inline; margin:0;">Pindalühikud</strong> — igal sammul korrutame 100-ga:
+              <br>1 m² = 100 dm² = 10 000 cm² = 1 000 000 mm²
+            </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong> Arvu π väärtust on arvutatud üle 100 triljoni komakoha. Igapäevaelus piisab aga vaid kümnest — sellega saaks Maa ümbermõõtu arvutada millimeetri täpsusega!</div>
           </div>
         </div>
       </div>
@@ -2654,27 +2736,41 @@
         <div class="theory-body">
           <div class="theory-inner">
             <h4>Liikumisülesanded</h4>
-            <div class="rule orange-rule"><strong>Põhiseos:</strong>vahemaa=kiirus · aeg &nbsp;
-              →&nbsp;
-              s=v · t </div>
-            <div class="rule orange-rule"><strong>Vastassuunast
-                liikumine:</strong>lähenemiskiirus=v₁+v₂<br><strong>Sama suunda
-                liikumine:</strong>kaugnemiskiirus=v₁ − v₂ </div>
-            <h4>Murdude „keel" tekstis</h4>
-            <div class="rule orange-rule">„moodustab ²⁄₃" = korruta ²⁄₃-ga &nbsp;&nbsp;|&nbsp;&nbsp; „on
-              ²⁄₃"=korruta ²⁄₃-ga<br>„²⁄₃ millestki" = korruta see ²⁄₃-ga
+            <div class="rule orange-rule">
+              <strong>Põhiseos: s = v · t</strong>
+              Vahemaa (s) = kiirus (v) · aeg (t). Sellest saame tuletada ka:
+              <br>Kiirus: v = s : t
+              <br>Aeg: t = s : v
+              <br>Näide: Auto sõidab kiirusega 60 km/h tund aega → vahemaa = 60 · 1 = 60 km.
             </div>
-            <div class="rule orange-rule">Kui „A on ²⁄₃ B-st" ja tead A-d, siis: <strong>B = A : ²⁄₃ = A
-                · ³⁄₂</strong>
+            <div class="rule orange-rule">
+              <strong>Vastassuunast ja samasuunast liikumine</strong>
+              Kui kaks liikujat sõidavad teineteise poole, siis nende kiirused liituvad: lähenemiskiirus = v₁ + v₂.
+              <br>Kui liiguvad samas suunas, siis kiirem kaugub aeglasemast: kaugnemiskiirus = v₁ − v₂.
+              <br>Näide: Jalgrattur (20 km/h) ja jalakäija (5 km/h) vastamisi → lähenemine 25 km/h.
+            </div>
+            <h4>Murdude „keel" tekstis</h4>
+            <div class="rule orange-rule">
+              <strong>Kuidas tõlkida tekstülesannet matemaatikaks?</strong>
+              „moodustab ²⁄₃" = korruta ²⁄₃-ga
+              <br>„on ²⁄₃ millestki" = korruta see ²⁄₃-ga
+              <br>„²⁄₃ sellest, mida …" = korruta ²⁄₃-ga
+            </div>
+            <div class="rule orange-rule">
+              <strong>Terviku leidmine murru abil</strong>
+              Kui tead, et „A on ²⁄₃ B-st", aga otsid B-d, siis jaga A murdosa võrra:
+              <br>B = A : ²⁄₃ = A · ³⁄₂
+              <br>Näide: 24 on ²⁄₃ B-st → B = 24 · ³⁄₂ = 36.
             </div>
             <h4>Lahendamise strateegia</h4>
-            <div class="rule orange-rule"><strong>1.</strong>Loe tekst hoolikalt läbi ja tõsta esile
-              arvandmed.<br><strong>2.</strong>Joonista skeem või tabel.<br><strong>3.</strong>Sõnasta
-              küsimus: mida on vaja leida?<br><strong>4.</strong>Lahenda samm-sammult ja kontrolli
-              vastuse mõistlikkust. </div>
-            <div class="fun-fact"><strong>Kas teadsid?</strong>Esimesed teadaolevad matemaatilised
-              tekstülesanded pärinevad üle 4000 aasta vanusest Babüloonia savitahvlilt. Seal arvutati
-              juba kanali kaevamise kiirust ja viljakoristuse aega ! </div>
+            <div class="rule orange-rule">
+              <strong>Neli sammu eduka lahenduseni</strong>
+              <strong style="display:inline; margin:0;">1.</strong> Loe tekst hoolikalt läbi ja tõsta esile kõik arvandmed.
+              <br><strong style="display:inline; margin:0;">2.</strong> Joonista skeem, joonis või koosta tabel.
+              <br><strong style="display:inline; margin:0;">3.</strong> Sõnasta selgelt küsimus: mida on vaja leida?
+              <br><strong style="display:inline; margin:0;">4.</strong> Lahenda samm-sammult ja kontrolli lõpus, kas vastus on mõistlik.
+            </div>
+            <div class="fun-fact"><strong>Kas teadsid?</strong> Esimesed teadaolevad matemaatilised tekstülesanded pärinevad üle 4000 aasta vanusest Babüloonia savitahvlilt. Seal arvutati juba kanali kaevamise kiirust ja viljakoristuse aega!</div>
           </div>
         </div>
       </div>
