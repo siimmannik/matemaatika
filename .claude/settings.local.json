@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd:*)",
+      "Bash(open:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd missing CSS styles for exercises, gamification, and SVG updates\n\nStyle formula display, difficulty badges, solution steps, answer boxes,\nXP popups, level-up overlay, and achievements panel. Update SVG mascots.\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "WebFetch(domain:siimmannik.github.io)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix errors, add missing styles, and clean up CSS\n\n- Fix broken HTML comments \\(< !-- → <!--\\)\n- Fix JS selectors: .quiz-block → .quiz-card, .theory-block → .theory-card\n- Fix broken template literals in confetti function\n- Add missing HTML elements: xp-current-label, paw-trail, cat-progress-msg, achievements-grid\n- Add missing CSS: quiz results/score, markers, confetti, cat reactions,\n  paw trail, achievements, close button, quiz reset, celebrate/bounce animations\n- Remove duplicate CSS rules \\(exercise-header, exercise-number, done-check, solution-toggle\\)\n- Harmonize font sizes for better readability\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)"
+    ]
+  }
+}
