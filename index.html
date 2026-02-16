@@ -1568,9 +1568,10 @@
       }
     }
 
-    /* Fixes for Dark Mode Contrast - v2 (Final) */
+    /* Fixes for Dark Mode Contrast - v3 (Final Emergency Fix) */
     @media (prefers-color-scheme: dark) {
 
+      /* Force dark background on all step/solution elements */
       .step,
       .solution .solution-inner .step {
         background: #1f2937 !important;
@@ -1582,17 +1583,46 @@
         color: #a5b4fc !important;
       }
 
-      .input-group input {
-        background: #374151 !important;
+      /* Force dark background on ALL inputs, regardless of parent */
+      input,
+      select,
+      textarea {
+        background-color: #374151 !important;
         color: #f9fafb !important;
         border-color: #4b5563 !important;
       }
 
+      /* Force dark background on toggle buttons */
+      .solution-toggle,
+      .quiz-toggle {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #4b5563 !important;
+      }
+
+      .solution-toggle:hover,
+      .quiz-toggle:hover {
+        background-color: #374151 !important;
+        filter: brightness(1.2);
+      }
+
+      /* Badge Fixes */
       .difficulty.easy {
         background: #064e3b !important;
         color: #d1fae5 !important;
       }
 
+      .difficulty.medium {
+        background: #78350f !important;
+        color: #fef3c7 !important;
+      }
+
+      .difficulty.hard {
+        background: #881337 !important;
+        color: #ffe4e6 !important;
+      }
+
+      /* Hint Fix */
       .hint {
         background: rgba(31, 41, 55, 0.9) !important;
         color: #e0e7ff !important;
