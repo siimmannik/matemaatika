@@ -37,6 +37,147 @@
       /* Slightly less round for cleaner look */
     }
 
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111827;
+        /* Gray 900 */
+        --card: #1f2937;
+        /* Gray 800 */
+        --text: #f9fafb;
+        /* Gray 50 */
+        --text-light: #9ca3af;
+        /* Gray 400 */
+        --border: #374151;
+        /* Gray 700 */
+        --primary-light: #312e81;
+        /* Indigo 900 */
+        --accent-green-light: #064e3b;
+        /* Emerald 900 */
+        --accent-orange-light: #78350f;
+        /* Amber 900 */
+        --accent-rose-light: #881337;
+        /* Rose 900 */
+        --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      }
+
+      body {
+        background-image: radial-gradient(#374151 0.5px, transparent 0.5px), radial-gradient(#374151 0.5px, var(--bg) 0.5px);
+      }
+
+      .card {
+        border-color: #374151;
+      }
+
+      /* Component Overrides for Dark Mode */
+      .quiz-card {
+        background: #422006;
+        border-color: #b45309;
+      }
+
+      .rule {
+        background: var(--card);
+        color: var(--text);
+      }
+
+      .green-rule {
+        background: #064e3b;
+        border-color: #059669;
+      }
+
+      .orange-rule {
+        background: #78350f;
+        border-color: #d97706;
+      }
+
+      .purple-rule {
+        background: #312e81;
+        border-color: #7c3aed;
+      }
+
+      /* Difficulty Badges & Steps */
+      .difficulty.easy,
+      .step.green-step {
+        color: #d1fae5;
+        background: #064e3b;
+      }
+
+      .difficulty.medium,
+      .step.orange-step {
+        color: #fef3c7;
+        background: #78350f;
+      }
+
+      .difficulty.hard,
+      .step.purple-step {
+        color: #ffe4e6;
+        background: #881337;
+      }
+
+      /* Quiz Options */
+      .quiz-opt {
+        background: var(--card);
+        color: var(--text);
+      }
+
+      .quiz-opt.correct {
+        background: #064e3b;
+        color: #d1fae5;
+        border-color: #059669;
+      }
+
+      .quiz-opt.wrong {
+        background: #881337;
+        color: #ffe4e6;
+        border-color: #e11d48;
+      }
+
+      /* Other Elements */
+      .fun-fact {
+        background: #0c4a6e;
+        color: #e0f2fe;
+        border-color: #0ea5e9;
+      }
+
+      .answer-box {
+        background: #064e3b;
+        border-color: #059669;
+        color: #d1fae5;
+      }
+
+      .hint {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: var(--primary);
+        color: var(--text);
+      }
+
+      .hint:hover {
+        background: var(--primary-light);
+      }
+
+      .hint-text {
+        background: #1e3a8a;
+        border-left-color: var(--primary);
+        color: #e0f2fe;
+      }
+
+      .formula {
+        background: #111827;
+        border-color: #374151;
+        color: #e5e7eb;
+      }
+
+      .solution {
+        background: #111827;
+        border-color: #312e81;
+      }
+
+      .solution::before {
+        border-bottom-color: #374151;
+        color: #9ca3af;
+      }
+    }
+
     * {
       margin: 0;
       padding: 0;
