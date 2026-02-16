@@ -1567,6 +1567,44 @@
         border-color: #6366f1;
       }
     }
+
+    /* Fixes for Dark Mode Contrast - v2 (Final) */
+    @media (prefers-color-scheme: dark) {
+
+      .step,
+      .solution .solution-inner .step {
+        background: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #374151 !important;
+      }
+
+      .step strong {
+        color: #a5b4fc !important;
+      }
+
+      .input-group input {
+        background: #374151 !important;
+        color: #f9fafb !important;
+        border-color: #4b5563 !important;
+      }
+
+      .difficulty.easy {
+        background: #064e3b !important;
+        color: #d1fae5 !important;
+      }
+
+      .hint {
+        background: rgba(31, 41, 55, 0.9) !important;
+        color: #e0e7ff !important;
+        border-color: #6366f1 !important;
+      }
+
+      .answer-box {
+        background: #064e3b !important;
+        color: #d1fae5 !important;
+        border-color: #059669 !important;
+      }
+    }
   </style>
 </head>
 
