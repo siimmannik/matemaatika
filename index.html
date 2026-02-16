@@ -1568,10 +1568,10 @@
       }
     }
 
-    /* Fixes for Dark Mode Contrast - v4 (Final Comprehensive Fix) */
+    /* Fixes for Dark Mode Contrast - v5 (Final Quiz & Hint Fix) */
     @media (prefers-color-scheme: dark) {
 
-      /* Force dark background on all main container elements */
+      /* Force dark background on all main container elements including Quiz */
       .step,
       .solution,
       .solution-inner .step,
@@ -1579,7 +1579,12 @@
       .rule,
       .fun-fact,
       .formula,
-      .card {
+      .card,
+      .quiz-card,
+      .quiz-body,
+      .quiz-inner,
+      .quiz-q,
+      .hint-text {
         background: #1f2937 !important;
         color: #f9fafb !important;
         border-color: #374151 !important;
@@ -1589,7 +1594,8 @@
       .step strong,
       .rule strong,
       .fun-fact strong,
-      p strong {
+      p strong,
+      .quiz-q p {
         color: #a5b4fc !important;
       }
 
@@ -1598,6 +1604,7 @@
         background: #111827 !important;
         /* Slightly darker for contrast */
         border-left-color: #6366f1 !important;
+        color: #f9fafb !important;
       }
 
       /* Quiz Options specific */
@@ -1656,11 +1663,17 @@
         color: #ffe4e6 !important;
       }
 
-      /* Hints */
+      /* Hints - Wrapper */
       .hint {
         background: rgba(31, 41, 55, 0.95) !important;
         color: #e0e7ff !important;
         border-color: #6366f1 !important;
+      }
+
+      /* Hint Text - Inner Box (was white on white) */
+      .hint.revealed .hint-text {
+        background: #1f2937 !important;
+        color: #e0e7ff !important;
       }
 
       .answer-box {
