@@ -1568,22 +1568,54 @@
       }
     }
 
-    /* Fixes for Dark Mode Contrast - v3 (Final Emergency Fix) */
+    /* Fixes for Dark Mode Contrast - v4 (Final Comprehensive Fix) */
     @media (prefers-color-scheme: dark) {
 
-      /* Force dark background on all step/solution elements */
+      /* Force dark background on all main container elements */
       .step,
-      .solution .solution-inner .step {
+      .solution,
+      .solution-inner .step,
+      .quiz-opt,
+      .rule,
+      .fun-fact,
+      .formula,
+      .card {
         background: #1f2937 !important;
         color: #f9fafb !important;
         border-color: #374151 !important;
       }
 
-      .step strong {
+      /* Specific text visibility */
+      .step strong,
+      .rule strong,
+      .fun-fact strong,
+      p strong {
         color: #a5b4fc !important;
       }
 
-      /* Force dark background on ALL inputs, regardless of parent */
+      /* Formula specific override (was white on white) */
+      .formula {
+        background: #111827 !important;
+        /* Slightly darker for contrast */
+        border-left-color: #6366f1 !important;
+      }
+
+      /* Quiz Options specific */
+      .quiz-opt:hover {
+        background: #374151 !important;
+      }
+
+      .quiz-opt.correct {
+        background: #064e3b !important;
+        color: #d1fae5 !important;
+      }
+
+      .quiz-opt.wrong {
+        background: #881337 !important;
+        color: #ffe4e6 !important;
+      }
+
+      /* Inputs */
       input,
       select,
       textarea {
@@ -1592,21 +1624,23 @@
         border-color: #4b5563 !important;
       }
 
-      /* Force dark background on toggle buttons */
+      /* Buttons */
       .solution-toggle,
-      .quiz-toggle {
+      .quiz-toggle,
+      .theory-toggle {
         background-color: #1f2937 !important;
         color: #f9fafb !important;
         border-color: #4b5563 !important;
       }
 
       .solution-toggle:hover,
-      .quiz-toggle:hover {
+      .quiz-toggle:hover,
+      .theory-toggle:hover {
         background-color: #374151 !important;
         filter: brightness(1.2);
       }
 
-      /* Badge Fixes */
+      /* Badges */
       .difficulty.easy {
         background: #064e3b !important;
         color: #d1fae5 !important;
@@ -1622,9 +1656,9 @@
         color: #ffe4e6 !important;
       }
 
-      /* Hint Fix */
+      /* Hints */
       .hint {
-        background: rgba(31, 41, 55, 0.9) !important;
+        background: rgba(31, 41, 55, 0.95) !important;
         color: #e0e7ff !important;
         border-color: #6366f1 !important;
       }
