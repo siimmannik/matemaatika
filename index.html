@@ -1539,6 +1539,34 @@
         grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
       }
     }
+
+    /* Fixes for Dark Mode Contrast */
+    @media (prefers-color-scheme: dark) {
+      .step {
+        background-color: var(--card) !important;
+        color: var(--text) !important;
+      }
+
+      .input-group input {
+        background-color: #374151 !important;
+        color: #f9fafb !important;
+        border-color: #4b5563 !important;
+      }
+
+      .step strong {
+        color: #a5b4fc !important;
+      }
+
+      .difficulty.easy {
+        background-color: #064e3b !important;
+        color: #d1fae5 !important;
+      }
+
+      .hint {
+        color: #e0e7ff;
+        border-color: #6366f1;
+      }
+    }
   </style>
 </head>
 
